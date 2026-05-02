@@ -1,9 +1,9 @@
 /* "What I do" — 4-up card grid */
 
 .what-grid{
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+  display: grid; grid-template-columns: 1fr; gap: 18px;
 }
-@media (max-width: 760px){ .what-grid{ grid-template-columns: 1fr; } }
+@media (min-width: 640px){ .what-grid{ grid-template-columns: repeat(2, 1fr); } }
 
 .what-card{
   position: relative;
@@ -11,7 +11,7 @@
   border: var(--b) var(--border-style) var(--line);
   border-radius: var(--r);
   box-shadow: var(--sh);
-  padding: 28px 26px 24px;
+  padding: 18px;
   transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -68,6 +68,6 @@
   border-radius: 999px;
 }
 
-@media (max-width: 760px){
-  .what-card{ padding: 18px; }
+@media (min-width: 640px){
+  .what-card{ padding: 28px 26px 24px; }
 }

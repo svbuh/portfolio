@@ -21,7 +21,8 @@
 .btn-arrow{ transition: transform .15s ease; }
 .btn:hover .btn-arrow{ transform: translateX(3px); }
 
-.cta-row{ display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.cta-row{ display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+.cta-row .btn{ flex: 1 1 auto; justify-content: center; }
 
 /* Hero nav variant — center the 4 nav buttons */
 .hero-nav{
@@ -36,7 +37,7 @@
 .hero-nav .btn:nth-child(3){ background: var(--accent-d); }
 .hero-nav .btn:nth-child(4){ background: var(--accent-b); color: var(--ink); }
 
-@media (max-width: 760px){
-  .cta-row{ flex-wrap: wrap; gap: 10px; }
-  .cta-row .btn{ flex: 1 1 auto; justify-content: center; }
+@media (min-width: 640px){
+  .cta-row{ flex-wrap: wrap; gap: 12px; }
+  .cta-row .btn{ flex: 0 1 auto; justify-content: normal; }
 }

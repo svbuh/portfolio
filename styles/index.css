@@ -1,7 +1,8 @@
 /* ── Master stylesheet — imports all modules in correct order ── */
 
-/* Base — must come first (tokens > reset > layout > typography) */
+/* Base — must come first (tokens > breakpoints > reset > layout > typography) */
 @import url("./base/tokens.css");
+@import url("./base/breakpoints.css");
 @import url("./base/reset.css");
 @import url("./base/layout.css");
 @import url("./base/typography.css");
@@ -20,6 +21,7 @@
 @import url("./components/konami.css");
 @import url("./components/tweaks.css");
 @import url("./components/theme-pill.css");
+@import url("./components/view-stage.css");
 @import url("./components/xp-taskbar.css");
 @import url("./components/xp-desktop.css");
 

@@ -2,15 +2,23 @@
 function Hero() {
   const m = window.motion;
   const wm = React.useContext(window.WMContext);
+  const nav = React.useContext(window.NavContext || React.createContext(null));
   const theme = React.useContext(window.ThemeContext);
-  const isXP = theme === "xp";
+  const inDesktop = React.useContext(window.InDesktopContext || React.createContext(false));
+  const isXPWindowed = theme === "xp" && inDesktop;
 
-  // In XP-desktop mode, hero buttons open the matching window.
-  // Otherwise they smooth-scroll the page to the section.
-  const goTo = (anchor, winId) => (e) => {
+  // Three navigation modes, in priority:
+  //   1) XP windowed desktop → open the matching window via WM
+  //   2) ViewSwitcher mode → swap the active view via NavContext
+  //   3) Fallback → smooth-scroll to the anchor (legacy long-scroll)
+  const goTo = (anchor, id) => (e) => {
     e.preventDefault();
-    if (isXP && wm) {
-      wm.open(winId);
+    if (isXPWindowed && wm) {
+      wm.open(id);
+      return;
+    }
+    if (nav && nav.navigate) {
+      nav.navigate(id);
       return;
     }
     const el = document.querySelector(anchor);
@@ -61,7 +69,7 @@ function Hero() {
   };
 
   return (
-    <section className="hero hero-centered" id="home" style={{ padding: "0px 0px 64px" }}>
+    <section className="hero hero-centered" id="home">
       <div className="hero-bg-grid" aria-hidden="true" />
       <SectionFrame title="Sven Buhre — index.html" icon="🌐" tab="HOME.N64">
       <div className="hero-center">
@@ -94,7 +102,7 @@ function Hero() {
           <a href="#stack" className="btn btn-ghost" onClick={goTo("#stack", "stack")}>
             <span>Stack</span>
           </a>
-          <a href="#projects" className="btn btn-ghost" onClick={goTo("#projects", "timeline")}>
+          <a href="#timeline" className="btn btn-ghost" onClick={goTo("#timeline", "timeline")}>
             <span>Timeline</span>
           </a>
           <a href="#contact" className="btn btn-primary" style={{ padding: "13px 22px" }} onClick={goTo("#contact", "contact")}>

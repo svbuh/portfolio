@@ -1,14 +1,15 @@
 /* Site header — sticky bar with logo, nav, CTA */
 
 .site-header{
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 12px;
   background: var(--card);
   border: var(--b) var(--border-style) var(--line);
   border-radius: var(--r);
   box-shadow: var(--sh-sm);
-  margin-bottom: 48px;
-  position: sticky; top: 14px; z-index: 10;
+  margin-bottom: 32px;
+  position: sticky; top: 8px; z-index: 10;
 }
 
 /* Centered identity bar (no nav) */
@@ -21,11 +22,11 @@
   justify-content: center;
 }
 
-.logo{ display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo{ display: flex; align-items: center; gap: 8px; text-decoration: none; flex: 1 1 auto; min-width: 0; }
 .logo-mark{
-  width: 40px; height: 40px;
+  width: 34px; height: 34px;
   display: grid; place-items: center;
-  font-family: var(--font-mono); font-weight: 700; font-size: 15px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px;
   background: var(--accent-d); color: var(--card);
   border: var(--b) var(--border-style) var(--line);
   border-radius: 8px;
@@ -33,20 +34,29 @@
 }
 .logo-word{
   font-family: var(--font-display);
-  font-size: 26px; line-height: 1;
+  font-size: 20px; line-height: 1;
 }
 .logo-word em{
   font-style: italic; color: var(--muted);
   font-size: 11px; font-family: var(--font-mono);
   margin-left: 4px;
+  display: none;
 }
 
 .nav{
-  display: flex; align-items: center; gap: 4px;
+  display: flex; align-items: center; gap: 2px;
+  order: 3;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-top: 1.5px solid var(--line);
+  padding-top: 8px;
+  margin-top: 4px;
   font-family: var(--font-mono); font-size: 13px;
 }
 .nav a{
-  padding: 8px 12px; border-radius: 8px;
+  padding: 6px 9px; border-radius: 8px;
+  font-size: 12px;
   text-decoration: none; opacity: .8;
   transition: background .15s, opacity .15s;
 }
@@ -54,35 +64,37 @@
 .nav a.active{ background: var(--ink); color: var(--card); opacity: 1; }
 .nav-cta{
   margin-left: 6px;
-  padding: 8px 14px !important;
+  padding: 6px 12px !important;
+  font-size: 12px;
+  flex-shrink: 0;
   background: var(--ink); color: var(--card) !important;
   border-radius: 999px !important;
   opacity: 1 !important;
 }
 .nav-cta:hover{ background: var(--ink); color: var(--card); }
 
-@media (max-width: 760px){
+@media (min-width: 640px){
   .site-header{
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px 12px;
-    margin-bottom: 32px;
-    position: sticky; top: 8px;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 12px 16px;
+    margin-bottom: 48px;
+    position: sticky; top: 14px;
   }
-  .logo{ gap: 8px; flex: 1 1 auto; min-width: 0; }
-  .logo-mark{ width: 34px; height: 34px; font-size: 13px; }
-  .logo-word{ font-size: 20px; }
-  .logo-word em{ display: none; }
+  .logo{ gap: 12px; flex: 0 1 auto; min-width: auto; }
+  .logo-mark{ width: 40px; height: 40px; font-size: 15px; }
+  .logo-word{ font-size: 26px; }
+  .logo-word em{ display: inline; }
   .nav{
-    order: 3;
-    flex: 1 1 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2px;
-    border-top: 1.5px solid var(--line);
-    padding-top: 8px;
-    margin-top: 4px;
+    order: 0;
+    flex: 0 1 auto;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    gap: 4px;
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
   }
-  .nav a{ padding: 6px 9px; font-size: 12px; }
-  .nav-cta{ font-size: 12px; padding: 6px 12px !important; flex-shrink: 0; }
+  .nav a{ padding: 8px 12px; font-size: inherit; }
+  .nav-cta{ font-size: inherit; padding: 8px 14px !important; flex-shrink: 1; }
 }

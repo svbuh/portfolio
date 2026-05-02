@@ -1,20 +1,22 @@
 // Sven Buhre — Composer
 const { useState, useEffect } = React;
 
-// Inner content used by all themes — sections one after another (long scroll).
-function ScrollSections() {
-  return (
-    <>
-      <Hero />
-      <WhatIDo />
-      <Stack />
-      <Timeline />
-      <Contact />
-    </>
+// Tracks viewport width so we can swap layouts at the laptop breakpoint.
+function useViewport() {
+  const [w, setW] = React.useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1280
   );
+  React.useEffect(() => {
+    const onResize = () => setW(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return w;
 }
 
 // XP-only desktop layout — sections live inside draggable windows.
+// Only used on laptop+ widths; below that XP falls back to ViewSwitcher
+// because draggable windows aren't usable on touch.
 function XPDesktopLayout() {
   return (
     <Desktop>
@@ -42,7 +44,8 @@ function App() {
     window.applyTheme(theme);
   }, [theme]);
 
-  const isXP = theme === "xp";
+  const viewportW = useViewport();
+  const useXPDesktop = theme === "xp" && viewportW >= 1024;
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -52,11 +55,11 @@ function App() {
       <Cursor />
       <Konami />
 
-      {isXP ? <XPDesktopLayout /> : <ScrollSections />}
+      {useXPDesktop ? <XPDesktopLayout /> : <ViewSwitcher />}
 
       <ThemePill theme={theme} onChange={setTheme} />
 
-      {isXP ? (
+      {useXPDesktop ? (
         <XPTaskbar />
       ) : (
         <footer className="site-footer">

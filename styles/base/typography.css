@@ -3,13 +3,15 @@
 .eyebrow{
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-mono);
-  font-size: 12px; letter-spacing: .06em;
-  padding: 6px 12px;
+  font-size: 11px; letter-spacing: .06em;
+  line-height: 1.4;
+  padding: 6px 11px;
   background: var(--card);
   border: var(--b) var(--border-style) var(--line);
   border-radius: var(--r-pill);
   box-shadow: 3px 3px 0 0 var(--line);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
 }
 .eyebrow .dot{
   width: 8px; height: 8px; border-radius: 50%;
@@ -18,7 +20,7 @@
 
 .sect-title{
   font-family: var(--font-display);
-  font-size: clamp(44px, 6vw, 76px);
+  font-size: clamp(36px, 9vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.015em;
   margin: 20px 0 16px;
@@ -29,14 +31,14 @@
 .sect-title em{ font-style: italic; color: var(--muted); }
 
 .sect-lede{
-  font-size: 17px; opacity: .82;
+  font-size: 15px; opacity: .82;
   max-width: 60ch; text-wrap: pretty;
   margin: 0 auto;
   text-align: center;
 }
 
 .sect-head{
-  margin: 0 auto 56px;
+  margin: 0 auto 36px;
   max-width: 760px;
   text-align: center;
   display: flex; flex-direction: column; align-items: center;
@@ -44,17 +46,17 @@
 }
 .sect-head .eyebrow{ align-self: center; }
 
-.centered-grid{ max-width: 1100px; margin: 0 auto; }
+.centered-grid{ max-width: var(--container-max); margin: 0 auto; }
 
-@media (max-width: 760px){
-  .sect-head{ margin-bottom: 36px; }
-  .sect-title{ font-size: clamp(36px, 9vw, 56px); }
-  .sect-lede{ font-size: 15px; }
+@media (min-width: 640px){
+  .sect-head{ margin-bottom: 56px; }
+  .sect-title{ font-size: clamp(44px, 6vw, 76px); }
+  .sect-lede{ font-size: 17px; }
   .eyebrow{
-    white-space: normal;
-    font-size: 11px;
-    line-height: 1.4;
-    padding: 6px 11px;
-    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: inherit;
+    padding: 6px 12px;
+    text-align: inherit;
   }
 }

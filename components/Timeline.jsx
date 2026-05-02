@@ -131,7 +131,7 @@ function Timeline() {
   });
 
   return (
-    <section id="projects">
+    <section id="timeline">
       <SectionHead
         eyebrow="Timeline"
         dotColor="var(--accent-b)"

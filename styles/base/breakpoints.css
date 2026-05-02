@@ -1,0 +1,22 @@
+/* Breakpoints - mobile-first responsive contract.
+   Mobile:  0-639px      default styles, no media query
+   Tablet:  640-1023px   @media (min-width: 640px)
+   Laptop:  1024-1439px  @media (min-width: 1024px)
+   Desktop: 1440px+      @media (min-width: 1440px)
+   Write default rules for mobile, then layer wider tiers with min-width only. */
+
+:root{
+  --container-max: 1100px;
+}
+
+@media (min-width: 1024px){
+  :root{
+    --container-max: 1100px;
+  }
+}
+
+@media (min-width: 1440px){
+  :root{
+    --container-max: 1280px;
+  }
+}

@@ -1,17 +1,22 @@
 /* Hero — centered headline w/ staggered word reveal */
 
-.hero{ position: relative; }
+.hero{ position: relative; padding: 18px 0 0; min-height: auto; }
 .hero-centered{
   position: relative;
-  min-height: 78vh;
+  min-height: auto;
   display: flex; align-items: center; justify-content: center;
-  padding: 64px 0;
+  padding: 28px 0;
 }
 
 /* Long-scroll layouts (PS1/Neo/N64) — make the hero fill the first fold so
    the next section sits below the viewport and only appears once you scroll
    or click a hero CTA. XP keeps its windowed sizing. */
-@media (min-width: 761px){
+@media (min-width: 640px){
+  .hero{ padding: 0; min-height: auto; }
+  .hero-centered{
+    min-height: 78vh;
+    padding: 64px 0;
+  }
   body:not([data-theme="xp"]) .hero-centered{
     min-height: calc(100dvh - 110px);
   }
@@ -23,13 +28,14 @@
   gap: 24px;
   max-width: 920px;
   margin: 0 auto;
+  padding: 0 4px;
 }
 
 .hero-title{
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(64px, 10vw, 140px);
-  line-height: 1.02;
+  font-size: clamp(44px, 13vw, 72px) !important;
+  line-height: 0.98 !important;
   letter-spacing: -0.02em;
   margin: 22px 0 22px;
   font-weight: 400;
@@ -53,7 +59,7 @@
 }
 
 .hero-lede{
-  font-size: 17px;
+  font-size: 16px !important;
   max-width: 52ch;
   opacity: .85;
   margin: 0 auto 28px;
@@ -73,10 +79,8 @@
   z-index: 0;
 }
 
-@media (max-width: 760px){
-  .hero{ padding: 18px 0 0; min-height: auto; }
-  .hero-centered{ min-height: auto; padding: 28px 0; }
-  .hero-center{ padding: 0 4px; }
-  .hero-title{ font-size: clamp(44px, 13vw, 72px) !important; line-height: 0.98 !important; }
-  .hero-lede{ font-size: 16px !important; }
+@media (min-width: 640px){
+  .hero-center{ padding: 0; }
+  .hero-title{ font-size: clamp(64px, 10vw, 140px) !important; line-height: 1.02 !important; }
+  .hero-lede{ font-size: 17px !important; }
 }

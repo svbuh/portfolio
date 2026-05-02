@@ -22,7 +22,7 @@
     "SF Pro Text", ui-sans-serif, system-ui, sans-serif);
   letter-spacing: .04em;
 
-  opacity: var(--pill-idle-opacity, .72);
+  opacity: .94;
   transition: opacity .2s ease;
 }
 .theme-pill.is-hover{ opacity: 1; }
@@ -85,6 +85,7 @@
    below the pill on XP (which docks the pill at the top-right). */
 .theme-pill-tip{
   position: absolute;
+  display: none;
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
@@ -133,7 +134,7 @@ body[data-theme="xp"] .theme-pill-tip[data-show="1"]{
   }
 }
 
-@media (max-width: 520px){
-  .theme-pill{ opacity: .94; }
-  .theme-pill-tip{ display: none; }
+@media (min-width: 640px){
+  .theme-pill{ opacity: var(--pill-idle-opacity, .72); }
+  .theme-pill-tip{ display: block; }
 }

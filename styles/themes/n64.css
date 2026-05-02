@@ -122,15 +122,17 @@ body[data-theme="n64"] .nav-cta{
 body[data-theme="n64"] .hero-bg-grid{ display: none; }
 body[data-theme="n64"] .hero-title{
   font-family: var(--font-display);
-  font-size: clamp(52px, 9vw, 124px);
+  /* Match Neo/PS1 visual scale; the heavy stroke + shadow already make
+     N64 read bigger, so tone down the raw font-size to compensate. */
+  font-size: clamp(44px, 7.5vw, 96px) !important;
   letter-spacing: -0.02em;
-  line-height: .98;
+  line-height: 1.02 !important;
   color: var(--n64-yellow);
-  -webkit-text-stroke: 3px #000;
+  -webkit-text-stroke: 2.2px #000;
   text-shadow:
-    4px 4px 0 #000,
-    7px 7px 0 var(--n64-pink),
-    10px 10px 18px rgba(0,0,0,.35);
+    3px 3px 0 #000,
+    5px 5px 0 var(--n64-pink),
+    7px 7px 12px rgba(0,0,0,.3);
 }
 body[data-theme="n64"] .hero-title em{
   font-style: normal;
@@ -212,12 +214,18 @@ body[data-theme="n64"] .btn-ghost{
   text-shadow: 1px 1px 0 rgba(0,0,0,.4);
 }
 
-/* Hero nav buttons — each one a different funtastic color */
+/* Hero nav buttons — Funtastic N64 controller colors:
+   pink (Watermelon) · blue (Ice) · green (Jungle) · yellow (Atomic).
+   Yellow gets dark text because white-on-yellow is unreadable. */
 body[data-theme="n64"] .hero-nav .btn{ color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.4); }
-body[data-theme="n64"] .hero-nav .btn:nth-child(1){ background: var(--n64-blue); }
-body[data-theme="n64"] .hero-nav .btn:nth-child(2){ background: var(--n64-green); }
-body[data-theme="n64"] .hero-nav .btn:nth-child(3){ background: var(--n64-purple); }
-body[data-theme="n64"] .hero-nav .btn:nth-child(4){ background: var(--n64-pink); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(1){ background: var(--n64-pink); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(2){ background: var(--n64-blue); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(3){ background: var(--n64-green); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(4){
+  background: var(--n64-yellow);
+  color: var(--ink);
+  text-shadow: none;
+}
 
 /* ── Sect head ───────────────────────────────────────── */
 body[data-theme="n64"] .sect-title{
