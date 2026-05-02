@@ -1,0 +1,42 @@
+/* Buttons (PS1 / Neobrutalism look — overridden per theme) */
+
+.btn{
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px;
+  font-family: var(--font-mono);
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink);
+  background: var(--card);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+.btn:hover{ transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--line); }
+.btn:active, .btn[data-pressed="1"]{ transform: translate(3px,3px); box-shadow: 3px 3px 0 0 var(--line); }
+.btn-primary{ background: var(--ink); color: var(--card); }
+.btn-ghost{ background: transparent; }
+.btn-arrow{ transition: transform .15s ease; }
+.btn:hover .btn-arrow{ transform: translateX(3px); }
+
+.cta-row{ display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+
+/* Hero nav variant — center the 4 nav buttons */
+.hero-nav{
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Default (PS1) — each button gets a distinct accent ──────── */
+.hero-nav .btn{ color: var(--card); }
+.hero-nav .btn:nth-child(1){ background: var(--accent-a); }
+.hero-nav .btn:nth-child(2){ background: var(--accent-c); }
+.hero-nav .btn:nth-child(3){ background: var(--accent-d); }
+.hero-nav .btn:nth-child(4){ background: var(--accent-b); color: var(--ink); }
+
+@media (max-width: 760px){
+  .cta-row{ flex-wrap: wrap; gap: 10px; }
+  .cta-row .btn{ flex: 1 1 auto; justify-content: center; }
+}

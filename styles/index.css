@@ -1,0 +1,30 @@
+/* ── Master stylesheet — imports all modules in correct order ── */
+
+/* Base — must come first (tokens > reset > layout > typography) */
+@import url("./base/tokens.css");
+@import url("./base/reset.css");
+@import url("./base/layout.css");
+@import url("./base/typography.css");
+
+/* Components — generic UI building blocks (theme-agnostic defaults) */
+@import url("./components/buttons.css");
+@import url("./components/header.css");
+@import url("./components/hero.css");
+@import url("./components/what.css");
+@import url("./components/stack.css");
+@import url("./components/timeline.css");
+@import url("./components/contact.css");
+@import url("./components/footer.css");
+@import url("./components/cursor.css");
+@import url("./components/theme-backdrop.css");
+@import url("./components/konami.css");
+@import url("./components/tweaks.css");
+@import url("./components/theme-pill.css");
+@import url("./components/xp-taskbar.css");
+@import url("./components/xp-desktop.css");
+
+/* Themes — last so they can override anything above via body[data-theme="..."] */
+@import url("./themes/ps1.css?v=18");
+@import url("./themes/neobrutalism.css?v=18");
+@import url("./themes/win-xp.css?v=18");
+@import url("./themes/n64.css?v=18");

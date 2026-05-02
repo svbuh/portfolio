@@ -1,0 +1,60 @@
+/* Typography primitives — eyebrow, section title/lede, section head */
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: .06em;
+  padding: 6px 12px;
+  background: var(--card);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: var(--r-pill);
+  box-shadow: 3px 3px 0 0 var(--line);
+  white-space: nowrap;
+}
+.eyebrow .dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--line);
+}
+
+.sect-title{
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 20px 0 16px;
+  text-wrap: balance;
+  font-weight: 400;
+  text-align: center;
+}
+.sect-title em{ font-style: italic; color: var(--muted); }
+
+.sect-lede{
+  font-size: 17px; opacity: .82;
+  max-width: 60ch; text-wrap: pretty;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sect-head{
+  margin: 0 auto 56px;
+  max-width: 760px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 16px;
+}
+.sect-head .eyebrow{ align-self: center; }
+
+.centered-grid{ max-width: 1100px; margin: 0 auto; }
+
+@media (max-width: 760px){
+  .sect-head{ margin-bottom: 36px; }
+  .sect-title{ font-size: clamp(36px, 9vw, 56px); }
+  .sect-lede{ font-size: 15px; }
+  .eyebrow{
+    white-space: normal;
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 6px 11px;
+    text-align: center;
+  }
+}

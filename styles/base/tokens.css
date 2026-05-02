@@ -1,0 +1,42 @@
+/* Tokens — alle CSS Custom Properties.
+   Themes überschreiben diese via body[data-theme="..."]. */
+
+:root{
+  /* Colors */
+  --ink: #161616;
+  --bg: #CFCDC8;
+  --card: #DCDAD4;
+  --muted: #6a6558;
+  --line: var(--ink);
+
+  --accent-a: #D63A3A;
+  --accent-b: #F4C61F;
+  --accent-c: #3FA34D;
+  --accent-d: #2D6CDF;
+
+  /* Borders & shadows */
+  --b: 2.5px;
+  --border-style: solid;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-pill: 999px;
+  --r: var(--r-lg);
+
+  --sh-sm: 4px 4px 0 0 var(--line);
+  --sh: 6px 6px 0 0 var(--line);
+  --sh-lg: 10px 10px 0 0 var(--line);
+
+  /* Type */
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout */
+  --max-w: 1100px;
+  --gutter: 22px;
+
+  /* Theme transition (used when switching themes) */
+  --theme-transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+}

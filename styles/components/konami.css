@@ -1,0 +1,53 @@
+/* Konami easter egg — confetti + toast + body shake */
+
+.konami-confetti{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.konami-piece{
+  position: absolute;
+  width: 12px; height: 16px;
+  top: -20px;
+  border: 1.5px solid var(--ink);
+  animation: konami-fall linear forwards;
+}
+@keyframes konami-fall{
+  0%{ transform: translateY(0) rotate(0deg); opacity: 1; }
+  100%{ transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+}
+
+.konami-toast{
+  position: fixed;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  z-index: 10000;
+  background: var(--accent-b);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(40px, 8vw, 80px);
+  padding: 16px 32px;
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: var(--r);
+  box-shadow: 10px 10px 0 0 var(--line);
+  pointer-events: none;
+  animation: konami-toast 2.4s cubic-bezier(.22,1,.36,1) forwards;
+  white-space: nowrap;
+}
+@keyframes konami-toast{
+  0%{ opacity: 0; transform: translate(-50%, -50%) rotate(-2deg) scale(0.6); }
+  15%{ opacity: 1; transform: translate(-50%, -50%) rotate(-2deg) scale(1.05); }
+  85%{ opacity: 1; transform: translate(-50%, -50%) rotate(-2deg) scale(1); }
+  100%{ opacity: 0; transform: translate(-50%, -50%) rotate(-2deg) scale(0.95); }
+}
+
+body.konami-shake{ animation: konami-shake 0.5s ease-in-out; }
+@keyframes konami-shake{
+  0%,100%{ transform: translate(0,0); }
+  20%{ transform: translate(-4px, 2px); }
+  40%{ transform: translate(4px, -2px); }
+  60%{ transform: translate(-3px, -1px); }
+  80%{ transform: translate(3px, 1px); }
+}

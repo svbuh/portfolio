@@ -1,0 +1,73 @@
+/* Tweaks panel internal styles — preset grid, theme switcher */
+
+.preset-grid{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+}
+.preset-btn{
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px;
+  height: 32px;
+  font-size: 10.5px;
+  background: rgba(0,0,0,.05);
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  text-align: left;
+}
+.preset-btn:hover{ background: rgba(0,0,0,.1); }
+.preset-btn[data-active="1"]{ background: rgba(0,0,0,.14); outline: 1.5px solid rgba(0,0,0,.3); }
+.preset-swatches{ display: inline-flex; gap: 2px; flex-shrink: 0; }
+.preset-sw{ width: 8px; height: 8px; border-radius: 1px; border: .5px solid rgba(0,0,0,.2); }
+
+/* Theme switcher (4 large preview cards) */
+.theme-switch{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  margin-bottom: 8px;
+}
+.theme-btn{
+  position: relative;
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: 4px;
+  padding: 8px;
+  border: 1.5px solid rgba(0,0,0,.15);
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: transform .1s ease, border-color .1s;
+  overflow: hidden;
+}
+.theme-btn:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,.4); }
+.theme-btn[data-active="1"]{
+  border-color: rgba(0,0,0,.7);
+  outline: 2px solid rgba(0,0,0,.15);
+  outline-offset: 1px;
+}
+.theme-btn .tb-thumb{
+  height: 44px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.theme-btn .tb-name{
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.theme-btn .tb-desc{
+  font-size: 9px;
+  opacity: .55;
+  margin-top: -2px;
+}
+
+@media (max-width: 760px){
+  .tweaks-panel{
+    width: calc(100vw - 24px) !important;
+    max-width: 320px;
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+}

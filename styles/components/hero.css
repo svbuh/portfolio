@@ -1,0 +1,82 @@
+/* Hero — centered headline w/ staggered word reveal */
+
+.hero{ position: relative; }
+.hero-centered{
+  position: relative;
+  min-height: 78vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 64px 0;
+}
+
+/* Long-scroll layouts (PS1/Neo/N64) — make the hero fill the first fold so
+   the next section sits below the viewport and only appears once you scroll
+   or click a hero CTA. XP keeps its windowed sizing. */
+@media (min-width: 761px){
+  body:not([data-theme="xp"]) .hero-centered{
+    min-height: calc(100dvh - 110px);
+  }
+}
+.hero-center{
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.hero-title{
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 140px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 22px 0 22px;
+  font-weight: 400;
+  text-wrap: balance;
+  text-align: center;
+}
+.hero-title em{ font-style: italic; }
+.hero-line{ display: block; }
+
+.hw{ display: inline-block; margin-right: 0.28em; }
+.hw:last-child{ margin-right: 0; }
+.hw em{ font-style: italic; }
+.hw-accent{
+  background: var(--accent-b);
+  color: var(--ink);
+  padding: 0 0.18em;
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 0 var(--line);
+  transform: rotate(-1.2deg);
+}
+
+.hero-lede{
+  font-size: 17px;
+  max-width: 52ch;
+  opacity: .85;
+  margin: 0 auto 28px;
+  text-wrap: pretty;
+}
+
+.hero-bg-grid{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--ink) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--ink) 8%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 760px){
+  .hero{ padding: 18px 0 0; min-height: auto; }
+  .hero-centered{ min-height: auto; padding: 28px 0; }
+  .hero-center{ padding: 0 4px; }
+  .hero-title{ font-size: clamp(44px, 13vw, 72px) !important; line-height: 0.98 !important; }
+  .hero-lede{ font-size: 16px !important; }
+}

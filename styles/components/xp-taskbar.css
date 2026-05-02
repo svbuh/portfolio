@@ -1,0 +1,259 @@
+/* ─────────────────────────────────────────────────────────────
+   XP TASKBAR  ·  rendered ONLY when theme === "xp"
+   Authentic Luna green start button, blue gradient bar, tray
+   with clock. Start menu pops UP from the bottom.
+   ───────────────────────────────────────────────────────────── */
+
+.xp-taskbar{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 32px;
+  z-index: 1000;
+  display: flex;
+  align-items: stretch;
+  /* Classic XP Luna blue gradient */
+  background:
+    linear-gradient(to bottom,
+      #1F3FAA 0%,
+      #245EDB 4%,
+      #3C81F3 9%,
+      #4CB1FA 38%,
+      #2F73DC 65%,
+      #245EDB 92%,
+      #1F3FAA 100%);
+  border-top: 1px solid #0831D9;
+  font-family: "Tahoma", "Verdana", sans-serif;
+  font-size: 11px;
+  color: #fff;
+  user-select: none;
+  box-shadow: 0 -1px 0 rgba(255,255,255,.25) inset;
+}
+
+/* ── Start button — green Luna ────────────────────────── */
+.xp-start-btn{
+  position: relative;
+  height: 100%;
+  min-width: 96px;
+  padding: 0 24px 0 8px;
+  display: flex; align-items: center; gap: 6px;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+  background:
+    radial-gradient(ellipse 100% 80% at 0% 50%,
+      #5EAB47 0%,
+      #4F9D37 30%,
+      #3D8127 70%,
+      #2C6017 100%);
+  /* Curved right edge (XP start has rounded right) */
+  border-radius: 0 12px 12px 0;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.4),
+    inset -2px -2px 4px rgba(0,0,0,.3),
+    1px 0 2px rgba(0,0,0,.4);
+}
+.xp-start-btn:hover{
+  filter: brightness(1.08);
+}
+.xp-start-btn.is-open{
+  background:
+    radial-gradient(ellipse 100% 80% at 0% 50%,
+      #4F9D37 0%,
+      #3D8127 50%,
+      #2C6017 100%);
+  box-shadow:
+    inset 2px 2px 4px rgba(0,0,0,.4),
+    inset -1px -1px 0 rgba(255,255,255,.2);
+}
+.xp-start-flag{
+  display: inline-grid;
+  grid-template: repeat(2, 9px) / repeat(2, 9px);
+  gap: 2px;
+  transform: skewX(-12deg);
+  flex-shrink: 0;
+}
+.xp-start-flag > span{
+  display: block;
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.4);
+}
+.xp-flag-r{ background: #E5322D; }
+.xp-flag-g{ background: #2EBF4F; }
+.xp-flag-b{ background: #2C7BE3; }
+.xp-flag-y{ background: #FFC72C; }
+.xp-start-label{ position: relative; top: -1px; }
+
+/* ── Quick-launch / tasks area ────────────────────────── */
+.xp-tasks{
+  flex: 1 1 auto;
+  display: flex; align-items: center;
+  padding: 3px 6px;
+  gap: 2px;
+  /* subtle inner shadow at left edge */
+  box-shadow: inset 2px 0 4px rgba(0,0,0,.25);
+}
+.xp-task{
+  height: 26px;
+  padding: 0 12px;
+  display: flex; align-items: center; gap: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #3F8AE3 0%, #1955BD 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.25),
+    inset -1px -1px 0 rgba(0,0,0,.25);
+  max-width: 220px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.xp-task-active{
+  background: linear-gradient(to bottom, #2C6FCF 0%, #133E94 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(0,0,0,.4),
+    inset -1px -1px 0 rgba(255,255,255,.15);
+}
+.xp-task-icon{ display: inline-flex; align-items: center; }
+.xp-task-icon .xp-glyph-img{ display: block; }
+
+/* ── Tray (right) ─────────────────────────────────────── */
+.xp-tray{
+  display: flex; align-items: center;
+  height: 100%;
+  padding: 0 12px 0 8px;
+  gap: 10px;
+  background:
+    linear-gradient(to bottom, #129ACC 0%, #0E73B0 50%, #0A578F 100%);
+  border-left: 1px solid rgba(255,255,255,.25);
+  box-shadow: inset 1px 0 0 rgba(0,0,0,.25);
+  font-size: 11px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+.xp-tray-text{ font-weight: 500; }
+.xp-tray-divider{
+  width: 1px; height: 18px;
+  background: rgba(255,255,255,.3);
+  box-shadow: 1px 0 0 rgba(0,0,0,.2);
+}
+.xp-tray-clock{ font-weight: bold; min-width: 56px; text-align: right; }
+
+/* ─────────────────────────────────────────────────────────────
+   START MENU  ·  pops up above start button
+   Two-column XP Luna layout (left column blue/dark on white)
+   ───────────────────────────────────────────────────────────── */
+
+.xp-startmenu{
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  width: 320px;
+  background: #ECE9D8;
+  border: 1px solid #0831D9;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 4px -4px 14px rgba(0,0,0,.4);
+  overflow: hidden;
+  font-family: "Tahoma", Verdana, sans-serif;
+  color: #000;
+  animation: xp-sm-pop .12s ease-out;
+}
+@keyframes xp-sm-pop{
+  from{ transform: translateY(8px); opacity: 0; }
+  to{ transform: translateY(0); opacity: 1; }
+}
+
+.xp-startmenu-header{
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px;
+  background: linear-gradient(to bottom,
+    #2A86E8 0%,
+    #1762D5 50%,
+    #0F4CB0 100%);
+  border-bottom: 3px solid #FFC72C;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+.xp-sm-avatar{
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #E5322D 0%, #B92520 100%);
+  border: 2px solid #fff;
+  border-radius: 4px;
+  display: grid; place-items: center;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.xp-sm-username{
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.xp-startmenu-body{
+  background: #fff;
+  padding: 6px 0;
+}
+.xp-sm-list{
+  list-style: none; margin: 0; padding: 0;
+}
+.xp-sm-list a{
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 11px;
+}
+.xp-sm-list a:hover{
+  background: linear-gradient(to bottom, #3C81F3 0%, #1755C9 100%);
+  color: #fff;
+}
+.xp-sm-icon{
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.xp-sm-icon .xp-glyph-img{ display: block; }
+.xp-sm-label{
+  font-weight: 500;
+  font-family: "Tahoma", Verdana, sans-serif;
+}
+.xp-sm-list a:nth-child(-n+5) .xp-sm-label{
+  /* All entries get bold-ish weight like XP "All Programs" */
+}
+
+.xp-startmenu-footer{
+  background: linear-gradient(to bottom,
+    #2A86E8 0%,
+    #1762D5 50%,
+    #0F4CB0 100%);
+  padding: 8px 10px;
+  border-top: 2px solid #FFC72C;
+}
+.xp-sm-loc{
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+.xp-sm-loc:hover{ text-decoration: underline; }
+.xp-sm-loc-icon{ display: inline-flex; align-items: center; }
+.xp-sm-loc-icon .xp-glyph-img{ display: block; }
+
+/* ── Page bottom-padding so content isn't hidden under taskbar ── */
+body[data-theme="xp"] .page{
+  padding-bottom: 40px;
+}

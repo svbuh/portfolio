@@ -1,0 +1,49 @@
+/* Custom cursor — base structure only.
+   Visual style (background, border, shadow, size, even SVG arrow shapes)
+   is set per theme in each theme stylesheet via `.brut-cursor`. */
+
+@media (pointer: fine){
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"]{
+    cursor: none;
+  }
+}
+
+/* Outer wrapper — owns the Motion-driven translate. Don't add visual
+   styles here; otherwise box rendering competes with the inner element. */
+.brut-cursor-pos{
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  transform-origin: 0 0;
+}
+
+/* Inner element — the visible cursor. Themes paint this. */
+.brut-cursor{
+  width: 14px;
+  height: 14px;
+  background: var(--ink, #161616);
+  border: 2px solid var(--ink, #161616);
+  box-shadow: 3px 3px 0 0 var(--accent-b, #F4C61F);
+  margin: -2px 0 0 -2px;
+  transition:
+    width .15s ease,
+    height .15s ease,
+    margin .15s ease,
+    background-color .15s ease,
+    border-color .15s ease,
+    border-radius .15s ease,
+    box-shadow .15s ease,
+    filter .12s ease,
+    transform .12s cubic-bezier(.22,1,.36,1);
+}
+
+@media (pointer: coarse){ .brut-cursor-pos{ display: none; } }
+
+@media (prefers-reduced-motion: reduce){
+  .brut-cursor{ transition: none !important; }
+}

@@ -1,0 +1,612 @@
+/* ─────────────────────────────────────────────────────────────
+   NINTENDO 64 "FUNTASTIC" THEME
+   Bright, colorful — uses the official Funtastic controller
+   palette (watermelon pink, grape purple, ice blue, jungle
+   green, atomic yellow, fire orange). NO dark charcoal.
+   ───────────────────────────────────────────────────────────── */
+
+body[data-theme="n64"]{
+  --ink: #1a1a2e;            /* deep navy text on bright surfaces */
+  --bg: #00B7E4;             /* ice blue */
+  --card: #FFFFFF;
+  --muted: #4A5A8A;
+  --line: #1a1a2e;
+
+  /* Funtastic palette */
+  --n64-pink:   #FF388E;     /* watermelon */
+  --n64-purple: #8C3CDC;     /* grape */
+  --n64-blue:   #00B7E4;     /* ice */
+  --n64-green:  #00C85A;     /* jungle */
+  --n64-yellow: #FFDC00;     /* atomic */
+  --n64-orange: #FF7A1E;     /* fire */
+  --n64-red:    #E5322D;
+
+  --accent-a: var(--n64-pink);
+  --accent-b: var(--n64-yellow);
+  --accent-c: var(--n64-green);
+  --accent-d: var(--n64-purple);
+
+  --b: 3px;
+  --border-style: solid;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r: 12px;
+
+  --sh-sm: 0 3px 0 0 #000, 0 5px 10px rgba(0,0,0,.2);
+  --sh: 0 4px 0 0 #000, 0 8px 16px rgba(0,0,0,.25);
+  --sh-lg: 0 6px 0 0 #000, 0 12px 24px rgba(0,0,0,.3);
+
+  --font-display: "Bowlby One", "Lilita One", "Arial Black", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Funtastic backdrop — handled by <ThemeBackdrop /> */
+body[data-theme="n64"]{
+  background: transparent;
+  color: var(--ink);
+  min-height: 100vh;
+  position: relative;
+}
+
+body[data-theme="n64"] ::selection{
+  background: var(--n64-pink);
+  color: #fff;
+}
+
+body[data-theme="n64"] .page{ position: relative; z-index: 1; }
+
+/* ── Header — bright yellow bar ──────────────────────── */
+body[data-theme="n64"] .site-header{
+  background: var(--n64-yellow);
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.4),
+    inset 0 -3px 0 rgba(0,0,0,.15),
+    4px 4px 0 #000;
+  color: var(--ink);
+}
+body[data-theme="n64"] .logo-mark{
+  background: var(--n64-red);
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.35),
+    inset 0 -2px 0 rgba(0,0,0,.25),
+    2px 2px 0 #000;
+  color: #fff;
+  font-family: var(--font-display);
+}
+body[data-theme="n64"] .logo-word{
+  font-family: var(--font-display);
+  color: var(--ink);
+  text-shadow: none;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+body[data-theme="n64"] .logo-word em{
+  color: var(--n64-pink);
+  font-family: var(--font-mono);
+  text-shadow: 1px 1px 0 #000;
+}
+body[data-theme="n64"] .nav a{
+  color: var(--ink);
+  font-family: var(--font-mono);
+  text-shadow: none;
+  font-weight: 700;
+}
+body[data-theme="n64"] .nav a:hover{
+  background: rgba(0,0,0,.1);
+}
+body[data-theme="n64"] .nav a.active{
+  background: var(--n64-pink);
+  color: #fff;
+}
+body[data-theme="n64"] .nav-cta{
+  background: var(--n64-pink) !important;
+  color: #fff !important;
+  border: 3px solid #000;
+  border-radius: 8px !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.3),
+    inset 0 -2px 0 rgba(0,0,0,.25),
+    2px 2px 0 #000;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+body[data-theme="n64"] .hero-bg-grid{ display: none; }
+body[data-theme="n64"] .hero-title{
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 124px);
+  letter-spacing: -0.02em;
+  line-height: .98;
+  color: var(--n64-yellow);
+  -webkit-text-stroke: 3px #000;
+  text-shadow:
+    4px 4px 0 #000,
+    7px 7px 0 var(--n64-pink),
+    10px 10px 18px rgba(0,0,0,.35);
+}
+body[data-theme="n64"] .hero-title em{
+  font-style: normal;
+  color: #fff;
+}
+body[data-theme="n64"] .hw-accent{
+  background: rgb(255, 229, 0);
+  -webkit-text-stroke: 3px #000;
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,.4),
+    inset 0 -3px 0 rgba(0,0,0,.25),
+    4px 4px 0 #000;
+  transform: rotate(-3deg);
+  padding: 0 0.18em;
+}
+body[data-theme="n64"] .hero-lede{
+  color: #fff;
+  font-size: 16px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.6);
+  font-weight: 600;
+}
+body[data-theme="n64"] .eyebrow{
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid #000;
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 #000;
+  font-family: var(--font-mono);
+  text-shadow: none;
+  font-weight: 700;
+}
+body[data-theme="n64"] .eyebrow .dot{
+  box-shadow: 0 0 0 2px #000;
+  background: var(--n64-pink);
+}
+
+/* ── Buttons — bright primary colors ─────────────────── */
+body[data-theme="n64"] .btn{
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.6),
+    inset 0 -2px 0 rgba(0,0,0,.15),
+    3px 3px 0 #000;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-shadow: none;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 12px 22px;
+}
+body[data-theme="n64"] .btn:hover{
+  transform: translate(-1px, -1px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.6),
+    inset 0 -2px 0 rgba(0,0,0,.15),
+    4px 4px 0 #000;
+}
+body[data-theme="n64"] .btn:active{
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.4),
+    1px 1px 0 #000;
+}
+body[data-theme="n64"] .btn-primary{
+  background: var(--n64-pink);
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+body[data-theme="n64"] .btn-ghost{
+  background: var(--n64-blue);
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+
+/* Hero nav buttons — each one a different funtastic color */
+body[data-theme="n64"] .hero-nav .btn{ color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.4); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(1){ background: var(--n64-blue); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(2){ background: var(--n64-green); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(3){ background: var(--n64-purple); }
+body[data-theme="n64"] .hero-nav .btn:nth-child(4){ background: var(--n64-pink); }
+
+/* ── Sect head ───────────────────────────────────────── */
+body[data-theme="n64"] .sect-title{
+  font-family: var(--font-display);
+  color: var(--n64-yellow);
+  -webkit-text-stroke: 2.5px #000;
+  text-shadow:
+    3px 3px 0 #000,
+    5px 5px 0 var(--n64-pink);
+}
+body[data-theme="n64"] .sect-title em{
+  font-style: normal;
+  color: #fff;
+}
+body[data-theme="n64"] .sect-lede{
+  color: #fff;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.55);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* ── Cartridge cards (Frame for sections) — vibrant ── */
+.n64-cartridge{
+  position: relative;
+  margin: 0 0 32px;
+  background: var(--n64-pink);
+  border: 3px solid #000;
+  border-radius: 10px 10px 16px 16px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.35),
+    inset 0 -3px 0 rgba(0,0,0,.2),
+    6px 6px 0 #000,
+    10px 10px 20px rgba(0,0,0,.25);
+  overflow: hidden;
+  color: var(--ink);
+}
+/* Rotate cartridge colors per index using nth-of-type fallback via custom prop */
+body[data-theme="n64"] section:nth-of-type(2n) .n64-cartridge{ background: var(--n64-purple); }
+body[data-theme="n64"] section:nth-of-type(3n) .n64-cartridge{ background: var(--n64-orange); }
+body[data-theme="n64"] section:nth-of-type(4n) .n64-cartridge{ background: var(--n64-green); }
+
+.n64-cart-tab{
+  display: flex; align-items: center; justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  background: #000;
+  border-bottom: 3px solid #000;
+  font-family: var(--font-mono);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: none;
+}
+.n64-cart-tab .stripe{
+  display: flex; gap: 4px;
+  align-items: center;
+}
+.n64-cart-tab .stripe span{
+  width: 12px; height: 6px;
+  border-radius: 1px;
+}
+.n64-cart-tab .stripe span:nth-child(1){ background: var(--n64-pink); }
+.n64-cart-tab .stripe span:nth-child(2){ background: var(--n64-yellow); }
+.n64-cart-tab .stripe span:nth-child(3){ background: var(--n64-green); }
+.n64-cart-tab .stripe span:nth-child(4){ background: var(--n64-blue); }
+.n64-cart-label{
+  margin: 14px;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 6px;
+  padding: 22px 24px;
+  color: #181818;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.08);
+}
+
+body[data-theme="n64"] .n64-cart-label,
+body[data-theme="n64"] .n64-cart-label *{
+  color: #181818;
+  text-shadow: none;
+}
+
+/* ── What I do — colorful cards ──────────────────────── */
+body[data-theme="n64"] .what-grid{
+  gap: 16px;
+}
+body[data-theme="n64"] .what-card{
+  background: var(--n64-yellow);
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.4),
+    inset 0 -3px 0 rgba(0,0,0,.18),
+    4px 4px 0 #000,
+    8px 8px 16px rgba(0,0,0,.25);
+  color: var(--ink);
+}
+body[data-theme="n64"] .what-card:nth-child(1){ background: var(--n64-pink); color: #fff; }
+body[data-theme="n64"] .what-card:nth-child(2){ background: var(--n64-blue); color: #fff; }
+body[data-theme="n64"] .what-card:nth-child(3){ background: var(--n64-green); color: #fff; }
+body[data-theme="n64"] .what-card:nth-child(4){ background: var(--n64-yellow); color: var(--ink); }
+body[data-theme="n64"] .what-card:hover{
+  transform: translate(-2px, -2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.4),
+    inset 0 -3px 0 rgba(0,0,0,.18),
+    6px 6px 0 #000,
+    10px 10px 20px rgba(0,0,0,.3);
+}
+body[data-theme="n64"] .wc-num{
+  background: #000;
+  border: 2px solid #000;
+  border-radius: 6px;
+  color: var(--n64-yellow);
+  font-weight: 700;
+  text-shadow: none;
+}
+body[data-theme="n64"] .wc-icon{
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    inset 0 -2px 0 rgba(0,0,0,.1),
+    2px 2px 0 #000;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+body[data-theme="n64"] .what-card:nth-child(1) .wc-icon{ color: var(--n64-pink); }
+body[data-theme="n64"] .what-card:nth-child(2) .wc-icon{ color: var(--n64-blue); }
+body[data-theme="n64"] .what-card:nth-child(3) .wc-icon{ color: var(--n64-green); }
+body[data-theme="n64"] .what-card:nth-child(4) .wc-icon{ color: var(--n64-orange); }
+body[data-theme="n64"] .wc-title{
+  font-family: var(--font-display);
+  color: #fff;
+  text-shadow:
+    2px 2px 0 #000,
+    3px 3px 0 rgba(0,0,0,.4);
+  font-size: 26px;
+}
+body[data-theme="n64"] .what-card:nth-child(4) .wc-title{
+  color: var(--ink);
+  text-shadow: none;
+}
+body[data-theme="n64"] .wc-title em{
+  font-style: normal;
+  color: var(--n64-yellow);
+}
+body[data-theme="n64"] .what-card:nth-child(4) .wc-title em{ color: var(--n64-pink); }
+body[data-theme="n64"] .wc-body{
+  color: inherit;
+  opacity: .95;
+  text-shadow: none;
+}
+body[data-theme="n64"] .wc-tags li{
+  background: rgba(255,255,255,.85);
+  border: 2px solid #000;
+  border-radius: 999px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-weight: 700;
+}
+body[data-theme="n64"] .what-card:nth-child(4) .wc-tags li{
+  background: rgba(0,0,0,.1);
+}
+
+/* ── Stack ───────────────────────────────────────────── */
+body[data-theme="n64"] .stack-wrap{
+  background: var(--n64-purple);
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.25),
+    inset 0 -3px 0 rgba(0,0,0,.18),
+    4px 4px 0 #000,
+    8px 8px 16px rgba(0,0,0,.25);
+  color: #fff;
+}
+body[data-theme="n64"] .stack-group h4{
+  color: var(--n64-yellow);
+  border-bottom: 3px solid var(--n64-pink);
+  text-shadow: 1px 1px 0 #000;
+}
+body[data-theme="n64"] .stack-chip{
+  background: #fff;
+  border: 2.5px solid #000;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    inset 0 -2px 0 rgba(0,0,0,.1),
+    2px 2px 0 #000;
+  color: var(--ink);
+  text-shadow: none;
+  font-weight: 700;
+}
+body[data-theme="n64"] .stack-chip:hover{
+  transform: translate(-1px, -1px);
+  background: var(--n64-yellow);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    inset 0 -2px 0 rgba(0,0,0,.1),
+    3px 3px 0 #000;
+}
+
+/* ── Timeline ────────────────────────────────────────── */
+body[data-theme="n64"] .timeline-track,
+body[data-theme="n64"] .timeline-track-fill{
+  background: #fff;
+  opacity: .5;
+}
+body[data-theme="n64"] .tl-dot{
+  background: var(--n64-pink);
+  border: 3px solid #000;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.4),
+    inset 0 -2px 0 rgba(0,0,0,.2),
+    2px 2px 0 #000;
+}
+body[data-theme="n64"] .tl-item:nth-child(1) .tl-dot{ background: var(--n64-pink); }
+body[data-theme="n64"] .tl-item:nth-child(2) .tl-dot{ background: var(--n64-blue); }
+body[data-theme="n64"] .tl-item:nth-child(3) .tl-dot{ background: var(--n64-green); }
+body[data-theme="n64"] .tl-item:nth-child(4) .tl-dot{ background: var(--n64-yellow); }
+body[data-theme="n64"] .tl-period{
+  color: var(--n64-pink);
+  text-shadow: none;
+  font-weight: 700;
+}
+body[data-theme="n64"] .tl-org{
+  color: #4A5A8A;
+  text-shadow: none;
+  opacity: 1;
+}
+body[data-theme="n64"] .tl-main{
+  background: var(--n64-blue);
+  border: 3px solid #000;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.3),
+    inset 0 -3px 0 rgba(0,0,0,.18),
+    4px 4px 0 #000,
+    8px 8px 14px rgba(0,0,0,.25);
+  color: #fff;
+}
+body[data-theme="n64"] .tl-item:nth-child(1) .tl-main{ background: var(--n64-pink); }
+body[data-theme="n64"] .tl-item:nth-child(2) .tl-main{ background: var(--n64-blue); }
+body[data-theme="n64"] .tl-item:nth-child(3) .tl-main{ background: var(--n64-green); }
+body[data-theme="n64"] .tl-item:nth-child(4) .tl-main{ background: var(--n64-yellow); color: var(--ink); }
+body[data-theme="n64"] .tl-role{
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+body[data-theme="n64"] .tl-badge{
+  background: #000;
+  color: var(--n64-yellow);
+  border: 2px solid #000;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 1px 1px 0 #fff;
+  font-weight: 700;
+}
+body[data-theme="n64"] .tl-body{
+  color: inherit;
+  text-shadow: none;
+  opacity: .95;
+}
+body[data-theme="n64"] .tl-tags li{
+  background: rgba(255,255,255,.85);
+  border: 2px solid #000;
+  border-radius: 999px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+body[data-theme="n64"] .tl-item:nth-child(4) .tl-tags li{
+  background: rgba(0,0,0,.12);
+}
+
+/* ── Contact — bright orange/pink ────────────────────── */
+body[data-theme="n64"] .contact{
+  background: var(--n64-orange);
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 14px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.35),
+    inset 0 -4px 0 rgba(0,0,0,.2),
+    6px 6px 0 #000,
+    10px 10px 20px rgba(0,0,0,.3);
+}
+body[data-theme="n64"] .contact h2{
+  font-family: var(--font-display);
+  color: var(--n64-yellow);
+  text-shadow:
+    3px 3px 0 #000,
+    5px 5px 0 var(--n64-pink);
+}
+body[data-theme="n64"] .contact h2 em{
+  color: #fff;
+  font-style: normal;
+}
+body[data-theme="n64"] .contact p{
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.45);
+  opacity: .98;
+  font-weight: 600;
+}
+body[data-theme="n64"] .c-link{
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    inset 0 -2px 0 rgba(0,0,0,.1),
+    3px 3px 0 #000;
+  font-family: var(--font-mono);
+  text-shadow: none;
+  font-weight: 700;
+}
+body[data-theme="n64"] .c-link:hover{
+  background: var(--n64-yellow);
+  color: var(--ink);
+  border-color: #000;
+  transform: translate(-1px, -1px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.5),
+    4px 4px 0 #000;
+}
+body[data-theme="n64"] .c-link .k{
+  color: var(--n64-pink);
+  text-shadow: none;
+}
+
+/* ── Footer ──────────────────────────────────────────── */
+body[data-theme="n64"] .site-footer{
+  border-top: 3px solid #000;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+body[data-theme="n64"] .site-footer .sig span.d{
+  background: var(--n64-pink);
+}
+
+/* Theme pill — dark frosted card with soft glow */
+body[data-theme="n64"]{
+  --pill-bg: rgba(20,22,28,.94);
+  --pill-border: 1px solid rgba(255,255,255,.12);
+  --pill-shadow: 0 4px 16px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.4);
+  --pill-fg: #f3f4f8;
+  --pill-radius: 14px;
+  --pill-pad: 7px 11px;
+  --pill-indicator: 1.5px solid rgba(255,255,255,.92);
+  --pill-tip-bg: rgba(20,22,28,.96);
+  --pill-tip-fg: #f3f4f8;
+  --pill-tip-border: 1px solid rgba(255,255,255,.18);
+}
+
+/* Cursor — chunky low-poly arrow drawn as SVG so the outline follows the
+   silhouette (clip-path can't outline its polygon edges). Two paths:
+   main fill + a lighter top-left highlight to suggest a beveled face.
+   Press squashes vertically for a rubbery feel. */
+body[data-theme="n64"] .brut-cursor{
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 22' xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges'%3E%3Cpath d='M2 2 L2 16 L5 13 L8 19 L11 18 L8 12 L14 12 Z' fill='%23E5322D' stroke='%23000' stroke-width='1.5' stroke-linejoin='miter'/%3E%3Cpath d='M3 3 L3 9 L4 8 L4 4 Z' fill='%23FF6B6B' opacity='.95'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: 18px;
+  height: 22px;
+  margin: -2px 0 0 -2px;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.45));
+}
+body[data-theme="n64"] .brut-cursor[data-hover="1"]{
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 22 26' xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges'%3E%3Cpath d='M2 2 L2 19 L6 16 L9 23 L13 22 L9 14 L17 14 Z' fill='%23F5C400' stroke='%23000' stroke-width='1.7' stroke-linejoin='miter'/%3E%3Cpath d='M3 3 L3 11 L4 10 L4 4 Z' fill='%23FFE066' opacity='.95'/%3E%3C/svg%3E");
+  width: 22px;
+  height: 26px;
+  margin: -2px 0 0 -2px;
+  filter: drop-shadow(0 3px 3px rgba(0,0,0,.55));
+}
+body[data-theme="n64"] .brut-cursor[data-press="1"]{
+  transform: scale(.86, .94);
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+}

@@ -1,0 +1,88 @@
+/* Site header — sticky bar with logo, nav, CTA */
+
+.site-header{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--card);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--sh-sm);
+  margin-bottom: 48px;
+  position: sticky; top: 14px; z-index: 10;
+}
+
+/* Centered identity bar (no nav) */
+.site-header--centered{
+  justify-content: center;
+  text-align: center;
+}
+.site-header--centered .logo{
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo{ display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark{
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 700; font-size: 15px;
+  background: var(--accent-d); color: var(--card);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 0 var(--line);
+}
+.logo-word{
+  font-family: var(--font-display);
+  font-size: 26px; line-height: 1;
+}
+.logo-word em{
+  font-style: italic; color: var(--muted);
+  font-size: 11px; font-family: var(--font-mono);
+  margin-left: 4px;
+}
+
+.nav{
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--font-mono); font-size: 13px;
+}
+.nav a{
+  padding: 8px 12px; border-radius: 8px;
+  text-decoration: none; opacity: .8;
+  transition: background .15s, opacity .15s;
+}
+.nav a:hover{ background: rgba(20,20,20,.06); opacity: 1; }
+.nav a.active{ background: var(--ink); color: var(--card); opacity: 1; }
+.nav-cta{
+  margin-left: 6px;
+  padding: 8px 14px !important;
+  background: var(--ink); color: var(--card) !important;
+  border-radius: 999px !important;
+  opacity: 1 !important;
+}
+.nav-cta:hover{ background: var(--ink); color: var(--card); }
+
+@media (max-width: 760px){
+  .site-header{
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 32px;
+    position: sticky; top: 8px;
+  }
+  .logo{ gap: 8px; flex: 1 1 auto; min-width: 0; }
+  .logo-mark{ width: 34px; height: 34px; font-size: 13px; }
+  .logo-word{ font-size: 20px; }
+  .logo-word em{ display: none; }
+  .nav{
+    order: 3;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2px;
+    border-top: 1.5px solid var(--line);
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+  .nav a{ padding: 6px 9px; font-size: 12px; }
+  .nav-cta{ font-size: 12px; padding: 6px 12px !important; flex-shrink: 0; }
+}

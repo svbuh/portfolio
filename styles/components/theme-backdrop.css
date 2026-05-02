@@ -1,0 +1,92 @@
+/* ── Theme backdrop layers ──────────────────────────────────
+   Rendered as a fixed-position div BEFORE .page in the DOM,
+   so they sit at z-index 0 while .page (z-index: 1) overlays. */
+
+.bliss-backdrop,
+.mario-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ═══════════ Bliss / Windows XP ═══════════ */
+/* The real Charles O'Rear photo, full-bleed cover. */
+
+.bliss-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ═══════════ Nintendo 64 — Funtastic colorful ═══════════
+   Vibrant N64 "Funtastic" controller palette: watermelon pink,
+   grape purple, ice blue, jungle green, fire orange, atomic
+   yellow. Layered as bold radial blobs for a playful, bright
+   gameroom-poster feel. */
+
+.mario-backdrop {
+  background:
+    /* base — saturated ice-blue sky */
+    linear-gradient(135deg, #00B7E4 0%, #0088D8 50%, #5C3BBF 100%);
+}
+
+.mario-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    /* watermelon pink burst — top-left */
+    radial-gradient(circle 55vmin at 8% 18%, rgba(255, 56, 142, 0.85), rgba(255, 56, 142, 0) 70%),
+    /* grape purple — bottom-right */
+    radial-gradient(circle 60vmin at 92% 88%, rgba(140, 60, 220, 0.80), rgba(140, 60, 220, 0) 70%),
+    /* atomic yellow — top-right */
+    radial-gradient(circle 40vmin at 88% 12%, rgba(255, 220, 0, 0.75), rgba(255, 220, 0, 0) 70%),
+    /* jungle green — bottom-left */
+    radial-gradient(circle 50vmin at 12% 82%, rgba(0, 200, 90, 0.75), rgba(0, 200, 90, 0) 70%),
+    /* fire orange — center accent */
+    radial-gradient(circle 35vmin at 50% 50%, rgba(255, 120, 30, 0.55), rgba(255, 120, 30, 0) 70%);
+}
+
+/* Confetti dots — small bright shapes scattered as visual rhythm */
+.mario-clouds {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+}
+
+.mario-clouds--top {
+  background:
+    /* bright dots top band — yellows + whites */
+    radial-gradient(circle 14px at 18% 8%,  #FFE600 60%, transparent 62%),
+    radial-gradient(circle 10px at 32% 14%, #FFFFFF 60%, transparent 62%),
+    radial-gradient(circle 18px at 47% 6%,  #FF388E 60%, transparent 62%),
+    radial-gradient(circle 12px at 62% 11%, #00E1FF 60%, transparent 62%),
+    radial-gradient(circle 16px at 75% 5%,  #B0FF3A 60%, transparent 62%),
+    radial-gradient(circle 11px at 89% 9%,  #FFFFFF 60%, transparent 62%);
+}
+
+.mario-clouds--mid {
+  background:
+    /* mid band — bigger blobs */
+    radial-gradient(circle 22px at 8% 42%,  #FFE600 60%, transparent 62%),
+    radial-gradient(circle 16px at 24% 50%, #FF388E 60%, transparent 62%),
+    radial-gradient(circle 20px at 70% 46%, #00E1FF 60%, transparent 62%),
+    radial-gradient(circle 14px at 84% 54%, #FFFFFF 60%, transparent 62%),
+    radial-gradient(circle 18px at 95% 38%, #B0FF3A 60%, transparent 62%);
+}
+
+.mario-clouds--bot {
+  background:
+    /* bottom band — pinks + greens */
+    radial-gradient(circle 16px at 6% 88%,  #FF388E 60%, transparent 62%),
+    radial-gradient(circle 12px at 22% 94%, #FFFFFF 60%, transparent 62%),
+    radial-gradient(circle 20px at 38% 86%, #B0FF3A 60%, transparent 62%),
+    radial-gradient(circle 14px at 56% 92%, #FFE600 60%, transparent 62%),
+    radial-gradient(circle 18px at 74% 88%, #00E1FF 60%, transparent 62%),
+    radial-gradient(circle 12px at 92% 94%, #FF388E 60%, transparent 62%);
+}

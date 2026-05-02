@@ -1,0 +1,139 @@
+/* Theme switcher pill.
+   Structure-only here — colors / borders / shadow per theme come from
+   --pill-* variables set in each theme stylesheet. The tooltip is
+   absolutely positioned so its appearance never resizes the pill. */
+
+.theme-pill{
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2147483640;
+
+  display: inline-flex;
+  align-items: center;
+  padding: var(--pill-pad, 7px 10px);
+  border-radius: var(--pill-radius, 999px);
+
+  background: var(--pill-bg, rgba(255,255,255,.92));
+  border: var(--pill-border, .5px solid rgba(0,0,0,.12));
+  box-shadow: var(--pill-shadow, 0 8px 24px rgba(0,0,0,.14));
+  color: var(--pill-fg, #29261b);
+  font: var(--pill-font, 500 10.5px/1 -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", ui-sans-serif, system-ui, sans-serif);
+  letter-spacing: .04em;
+
+  opacity: var(--pill-idle-opacity, .72);
+  transition: opacity .2s ease;
+}
+.theme-pill.is-hover{ opacity: 1; }
+
+.theme-pill-dots{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sliding ring indicator over the active dot.
+   Layout invariants the math relies on:
+     - dot width = 14px, gap = 8px → step per index = 22px
+     - indicator = 18px (centered on dot, 2px halo on each side) */
+.theme-pill-indicator{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -2px;
+  border-radius: var(--pill-indicator-radius, 50%);
+  border: var(--pill-indicator, 1.5px solid rgba(0,0,0,.85));
+  background: transparent;
+  transform: translateX(calc(var(--active-idx, 0) * 22px));
+  transition: transform .42s cubic-bezier(.22,1.36,.32,1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.theme-pill-dot{
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--pill-dot-radius, 50%);
+  border: 1px solid rgba(0,0,0,.18);
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 1px 1.5px rgba(0,0,0,.12);
+  transform-origin: center;
+  transition: transform .15s cubic-bezier(.22,1,.36,1);
+  z-index: 1;
+}
+.theme-pill-dot:focus-visible{
+  outline: 2px solid rgba(0,120,255,.65);
+  outline-offset: 2px;
+}
+.theme-pill-dot.pulse{
+  animation: theme-pill-pulse .28s cubic-bezier(.22,1.4,.32,1);
+}
+@keyframes theme-pill-pulse{
+  0%   { transform: scale(.78); }
+  55%  { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
+/* Tooltip — absolute, lives outside layout flow so the pill never
+   resizes when it appears. Positioned above the pill by default;
+   below the pill on XP (which docks the pill at the top-right). */
+.theme-pill-tip{
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 4px 8px;
+  background: var(--pill-tip-bg, rgba(20,20,20,.92));
+  color: var(--pill-tip-fg, #fff);
+  border-radius: 6px;
+  border: var(--pill-tip-border, 0);
+  font: 500 10.5px/1.2 -apple-system, BlinkMacSystemFont, ui-sans-serif,
+    system-ui, sans-serif;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .2s cubic-bezier(.22,1,.36,1);
+}
+.theme-pill-tip[data-show="1"]{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* On XP the bottom edge is the taskbar — dock pill top-right and
+   flip the tooltip to point downward. */
+body[data-theme="xp"] .theme-pill{
+  left: auto;
+  bottom: auto;
+  top: 16px;
+  right: 16px;
+}
+body[data-theme="xp"] .theme-pill-tip{
+  bottom: auto;
+  top: calc(100% + 8px);
+  transform: translateX(-50%) translateY(-4px);
+}
+body[data-theme="xp"] .theme-pill-tip[data-show="1"]{
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .theme-pill,
+  .theme-pill-indicator,
+  .theme-pill-dot,
+  .theme-pill-tip{
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 520px){
+  .theme-pill{ opacity: .94; }
+  .theme-pill-tip{ display: none; }
+}

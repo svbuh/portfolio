@@ -1,0 +1,17 @@
+/* Page-level layout & generic section sizing */
+
+.page{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 18px var(--gutter) 64px;
+}
+
+section{
+  margin-bottom: 112px;
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 760px){
+  .page{ padding: 12px 14px 48px; }
+  section{ margin-bottom: 80px; scroll-margin-top: 80px; }
+}

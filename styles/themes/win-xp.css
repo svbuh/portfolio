@@ -1,0 +1,645 @@
+/* ─────────────────────────────────────────────────────────────
+   WINDOWS XP "LUNA" THEME
+   Bliss desktop background, Tahoma/Verdana, Luna blue gradients,
+   real window chrome on every section (titlebar + min/max/close).
+   Every Section becomes an XP window via the XPWindow Frame.
+   ───────────────────────────────────────────────────────────── */
+
+body[data-theme="xp"]{
+  --ink: #000000;
+  --bg: #3A6EA5;            /* fallback solid */
+  --card: #ECE9D8;          /* Luna inactive surface */
+  --muted: #555;
+  --line: #0831D9;          /* XP-blue */
+
+  --accent-a: #245EDB;       /* active titlebar blue */
+  --accent-b: #FFC72C;       /* highlight yellow */
+  --accent-c: #16A653;       /* start-button green */
+  --accent-d: #245EDB;
+
+  --b: 1px;
+  --border-style: solid;
+
+  --r-sm: 0px;
+  --r-md: 3px;
+  --r-lg: 8px 8px 0 0;
+  --r: 0;
+
+  --sh-sm: none;
+  --sh: 2px 2px 8px rgba(0,0,0,.25);
+  --sh-lg: 4px 4px 12px rgba(0,0,0,.3);
+
+  --font-display: "Trebuchet MS", "Verdana", Tahoma, sans-serif;
+  --font-body: "Verdana", Tahoma, "Lucida Sans Unicode", sans-serif;
+  --font-mono: "Lucida Console", "Courier New", monospace;
+}
+
+/* ── Body — sky and hill rendered by <ThemeBackdrop /> in DOM ──── */
+body[data-theme="xp"]{
+  background: transparent;
+  background-color: #5BA1D8;
+  font-size: 11px;
+  color: #000;
+  min-height: 100vh;
+  position: relative;
+}
+
+body[data-theme="xp"] .page{ position: relative; z-index: 1; }
+
+/* ── XP Window frame (used by all Sections via XPWindow Frame) ── */
+.xp-window{
+  background: #ECE9D8;
+  border: 1px solid #0831D9;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 4px 4px 12px rgba(0,0,0,.35);
+  overflow: hidden;
+  margin-bottom: 24px;
+  font-family: "Verdana", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000;
+}
+
+.xp-titlebar{
+  display: flex; align-items: center; justify-content: space-between;
+  height: 28px;
+  padding: 0 4px 0 6px;
+  background: linear-gradient(to bottom,
+    #0058E6 0%,
+    #2F8FFB 8%,
+    #1D60D8 40%,
+    #1755C9 88%,
+    #0F4CB0 100%);
+  border-radius: 6px 6px 0 0;
+  color: #fff;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+  letter-spacing: 0;
+  user-select: none;
+}
+.xp-title{
+  display: flex; align-items: center; gap: 6px;
+  padding-left: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.xp-title .xp-icon{
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  display: inline-flex; align-items: center;
+}
+.xp-title .xp-icon .xp-glyph-img{ display: block; }
+
+.xp-controls{
+  display: flex; gap: 2px;
+  flex-shrink: 0;
+}
+.xp-ctrl{
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  font-family: "Marlett", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  color: #fff;
+  background: linear-gradient(to bottom, #4988E2 0%, #1A50C8 100%);
+  border: 1px solid #0036B8;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.xp-ctrl:hover{ filter: brightness(1.1); }
+.xp-ctrl.close{
+  background: linear-gradient(to bottom, #DD7766 0%, #B43A20 100%);
+  border-color: #800000;
+}
+
+.xp-body{
+  background: #ECE9D8;
+  padding: 18px 16px;
+  border: 1px solid #0831D9;
+  border-top: none;
+  border-radius: 0 0 0 0;
+}
+
+.xp-statusbar{
+  display: flex; align-items: center; justify-content: space-between;
+  background: #ECE9D8;
+  border-top: 1px solid #999;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: #444;
+}
+
+/* ── Header / nav re-styled as a Windows menu strip ───────── */
+body[data-theme="xp"] .site-header{
+  background: linear-gradient(to bottom, rgba(240,240,234,.95) 0%, rgba(222,218,205,.95) 100%);
+  backdrop-filter: blur(2px);
+  border: 1px solid #ACA899;
+  border-radius: 0;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.25);
+  padding: 4px 6px;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 18px;
+  font-size: 11px;
+}
+body[data-theme="xp"] .logo-mark{
+  width: 28px; height: 28px;
+  background: linear-gradient(to bottom, #4988E2 0%, #1A50C8 100%);
+  border: 1px solid #0036B8;
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  color: #fff;
+  font-size: 13px;
+}
+body[data-theme="xp"] .logo-word{
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+body[data-theme="xp"] .logo-word em{
+  font-family: "Verdana", Tahoma, sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  color: #555;
+}
+body[data-theme="xp"] .nav{
+  font-family: "Verdana", Tahoma, sans-serif;
+  font-size: 11px;
+  gap: 0;
+}
+body[data-theme="xp"] .nav a{
+  padding: 4px 10px;
+  border-radius: 0;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+}
+body[data-theme="xp"] .nav a:hover{
+  background: #316AC5;
+  color: #fff;
+  text-decoration-color: transparent;
+}
+body[data-theme="xp"] .nav a.active{
+  background: #316AC5;
+  color: #fff;
+}
+body[data-theme="xp"] .nav-cta{
+  background: linear-gradient(to bottom, #4FB13F 0%, #2A8C1F 50%, #226B19 100%) !important;
+  color: #fff !important;
+  border: 1px solid #115F0F !important;
+  border-radius: 8px 24px 24px 8px !important;
+  font-family: "Trebuchet MS", Tahoma, sans-serif !important;
+  font-weight: bold !important;
+  font-style: italic;
+  padding: 4px 18px !important;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+  font-size: 12px !important;
+  margin-left: 8px;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+body[data-theme="xp"] .hero-centered{
+  min-height: auto;
+  padding: 0;
+}
+body[data-theme="xp"] .hero-bg-grid{ display: none; }
+body[data-theme="xp"] .hero-center{
+  text-align: left;
+  align-items: flex-start;
+  max-width: 100%;
+  padding: 0;
+}
+body[data-theme="xp"] .hero-title{
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-size: clamp(32px, 4.5vw, 50px);
+  font-weight: bold;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+  text-align: left;
+  margin: 8px 0 12px;
+  color: #003C74;
+}
+body[data-theme="xp"] .hero-title em{
+  font-style: italic;
+  color: #245EDB;
+}
+body[data-theme="xp"] .hw-accent{
+  background: linear-gradient(to bottom, #FFFFC0 0%, #FFE699 50%, #F5C300 100%);
+  color: #000;
+  border: 1px solid #B8860B;
+  border-radius: 3px;
+  box-shadow: 1px 1px 0 #B8860B, inset 0 1px 0 rgba(255,255,255,.7);
+  transform: none;
+  padding: 0 6px;
+  font-style: italic;
+}
+body[data-theme="xp"] .hero-lede{
+  font-family: "Verdana", Tahoma, sans-serif;
+  font-size: 12px;
+  text-align: left;
+  margin: 0 0 18px;
+  max-width: 60ch;
+}
+body[data-theme="xp"] .cta-row{
+  justify-content: center;
+}
+body[data-theme="xp"] .hero-title,
+body[data-theme="xp"] .hero-lede,
+body[data-theme="xp"] .hero-pill{
+  text-align: center;
+}
+body[data-theme="xp"] .hero-pill{
+  margin-left: auto;
+  margin-right: auto;
+}
+body[data-theme="xp"] .eyebrow{
+  background: #FFFFCC;
+  border: 1px solid #B8B89A;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: "Verdana", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000;
+  padding: 3px 10px;
+}
+
+/* Buttons = XP-Luna 3D buttons */
+body[data-theme="xp"] .btn{
+  background: linear-gradient(to bottom, #FDFDFD 0%, #E5E5E5 50%, #D2D2D2 100%);
+  border: 1px solid #003C74;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #fff, 1px 1px 0 rgba(0,0,0,.1);
+  color: #000;
+  font-family: "Tahoma", Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  padding: 4px 14px;
+  text-shadow: none;
+}
+body[data-theme="xp"] .btn:hover{
+  background: linear-gradient(to bottom, #FDFDFD 0%, #FFE0A0 50%, #FFD278 100%);
+  border-color: #E59B00;
+  transform: none;
+  box-shadow: inset 0 0 0 1px #fff, 1px 1px 2px rgba(0,0,0,.2);
+}
+body[data-theme="xp"] .btn:active{
+  background: linear-gradient(to bottom, #C8C8C8 0%, #E0E0E0 100%);
+  transform: none;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,.3);
+}
+body[data-theme="xp"] .btn-primary{
+  background: linear-gradient(to bottom, #4988E2 0%, #2F69D2 50%, #1A50C8 100%);
+  color: #fff;
+  border-color: #003C74;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+}
+body[data-theme="xp"] .btn-primary:hover{
+  background: linear-gradient(to bottom, #5A99F0 0%, #3F79DD 50%, #2A60D5 100%);
+  border-color: #003C74;
+}
+
+/* Hero nav buttons — each one a colorful XP-style toolbar button */
+body[data-theme="xp"] .hero-nav .btn{
+  color: #fff;
+  border-color: #003C74;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+  font-weight: bold;
+}
+body[data-theme="xp"] .hero-nav .btn:nth-child(1){
+  background: linear-gradient(to bottom, #4988E2 0%, #2F69D2 50%, #1A50C8 100%);
+}
+body[data-theme="xp"] .hero-nav .btn:nth-child(2){
+  background: linear-gradient(to bottom, #6BC95A 0%, #3FA632 50%, #2C8520 100%);
+  border-color: #1F5F18;
+}
+body[data-theme="xp"] .hero-nav .btn:nth-child(3){
+  background: linear-gradient(to bottom, #FFD93B 0%, #FFB700 50%, #C98C00 100%);
+  color: #000;
+  border-color: #8B5E00;
+  text-shadow: none;
+}
+body[data-theme="xp"] .hero-nav .btn:nth-child(4){
+  background: linear-gradient(to bottom, #DD7766 0%, #C04A30 50%, #8B2A18 100%);
+  border-color: #5C1A0A;
+}
+
+/* ── Sect title (when used outside a window) ────────── */
+body[data-theme="xp"] .sect-head{ display: none; }
+
+/* ── What I do — items inside a single XP window become Win-XP icons ── */
+body[data-theme="xp"] .what-grid{
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+body[data-theme="xp"] .what-card{
+  background: #fff;
+  border: 1px solid #B8B8B8;
+  border-radius: 3px;
+  box-shadow: none;
+  padding: 14px 16px;
+  transform: none !important;
+  opacity: 1 !important;
+}
+body[data-theme="xp"] .what-card:hover{
+  background: #F0F4FF;
+  border-color: #316AC5;
+  transform: none;
+  box-shadow: none;
+}
+body[data-theme="xp"] .wc-num{
+  background: #ECE9D8;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-family: "Verdana", sans-serif;
+  font-size: 10px;
+}
+body[data-theme="xp"] .wc-icon{
+  background: linear-gradient(to bottom, #FFFAEC 0%, #FFC72C 100%);
+  border: 1px solid #B8860B;
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+body[data-theme="xp"] .wc-title{
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+body[data-theme="xp"] .wc-title em{ color: #245EDB; }
+body[data-theme="xp"] .wc-body{
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  opacity: 1;
+  color: #333;
+}
+body[data-theme="xp"] .wc-tags li{
+  background: #ECE9D8;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-family: "Verdana", sans-serif;
+  font-size: 10px;
+}
+
+/* ── Stack ───────────────────────────────────────────── */
+body[data-theme="xp"] .stack-wrap{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+body[data-theme="xp"] .stack-group h4{
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #245EDB;
+  border-bottom: 1px solid #999;
+  padding-bottom: 4px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+body[data-theme="xp"] .stack-chip{
+  background: linear-gradient(to bottom, #FDFDFD 0%, #E5E5E5 100%);
+  border: 1px solid #999;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #fff;
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  padding: 4px 10px;
+  color: #000;
+}
+body[data-theme="xp"] .stack-chip:hover{
+  background: linear-gradient(to bottom, #FDFDFD 0%, #FFE0A0 100%);
+  border-color: #E59B00;
+  transform: none;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+/* ── Timeline ────────────────────────────────────────── */
+body[data-theme="xp"] .timeline-track,
+body[data-theme="xp"] .timeline-track-fill{
+  background: #999;
+  width: 1px;
+  opacity: .5;
+}
+body[data-theme="xp"] .tl-dot{
+  background: linear-gradient(to bottom, #4988E2 0%, #1A50C8 100%);
+  border: 1px solid #003C74;
+  border-radius: 50%;
+  box-shadow: none;
+  width: 14px; height: 14px;
+  top: 30px;
+  left: 162px;
+}
+body[data-theme="xp"] .tl-pulse{ display: none; }
+body[data-theme="xp"] .tl-item[data-current="1"] .tl-dot{
+  background: linear-gradient(to bottom, #4FB13F 0%, #2A8C1F 100%);
+  border-color: #115F0F;
+}
+body[data-theme="xp"] .tl-period{
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
+body[data-theme="xp"] .tl-org{
+  font-family: "Verdana", sans-serif;
+  font-size: 10px;
+  color: #555;
+}
+body[data-theme="xp"] .tl-main{
+  background: #fff;
+  border: 1px solid #B8B8B8;
+  border-radius: 3px;
+  box-shadow: none;
+  padding: 12px 14px;
+}
+body[data-theme="xp"] .tl-main:hover{
+  background: #F0F4FF;
+  border-color: #316AC5;
+  transform: none;
+  box-shadow: none;
+}
+body[data-theme="xp"] .tl-role{
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 0;
+}
+body[data-theme="xp"] .tl-badge{
+  background: linear-gradient(to bottom, #4FB13F 0%, #2A8C1F 100%);
+  color: #fff;
+  border: 1px solid #115F0F;
+  border-radius: 3px;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+  font-family: "Verdana", sans-serif;
+}
+body[data-theme="xp"] .tl-body{
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  opacity: 1;
+  color: #333;
+}
+body[data-theme="xp"] .tl-tags li{
+  background: #ECE9D8;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-family: "Verdana", sans-serif;
+  font-size: 10px;
+}
+
+/* ── Contact ─────────────────────────────────────────── */
+body[data-theme="xp"] .contact{
+  background: #ECE9D8;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 0;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+  padding: 18px;
+}
+body[data-theme="xp"] .contact h2{
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 0;
+}
+body[data-theme="xp"] .contact h2 em{
+  color: #245EDB;
+  font-style: italic;
+}
+body[data-theme="xp"] .contact p{
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  opacity: 1;
+  color: #333;
+}
+body[data-theme="xp"] .c-link{
+  background: #fff;
+  border: 1px solid #B8B8B8;
+  border-radius: 3px;
+  color: #000;
+  font-family: "Verdana", sans-serif;
+  font-size: 11px;
+  padding: 8px 12px;
+}
+body[data-theme="xp"] .c-link .k{
+  color: #555;
+  font-size: 10px;
+}
+body[data-theme="xp"] .c-link:hover{
+  background: #316AC5;
+  color: #fff;
+  border-color: #003C74;
+  transform: none;
+}
+body[data-theme="xp"] .c-link:hover .k{ color: rgba(255,255,255,.7); }
+
+/* ── Footer = Windows Taskbar ────────────────────────── */
+body[data-theme="xp"] .site-footer{
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  margin: 0;
+  padding: 0 4px 0 0;
+  height: 30px;
+  background: linear-gradient(to bottom, #245EDB 0%, #1F4FB7 8%, #245EDB 50%, #1F4FB7 100%);
+  border-top: 1px solid #0831D9;
+  color: #fff;
+  font-family: "Tahoma", Verdana, sans-serif;
+  font-size: 11px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+}
+body[data-theme="xp"] .site-footer .sig{
+  margin-right: 8px;
+}
+body[data-theme="xp"] .site-footer .sig span.d{
+  background: #4FB13F;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.3);
+}
+body[data-theme="xp"] .loc-link{
+  border-bottom: 1px dotted rgba(255,255,255,.5);
+}
+body[data-theme="xp"] .page{ padding-bottom: 64px; }
+
+/* Start button (left side of footer/taskbar) */
+body[data-theme="xp"] .site-footer::before{
+  content: "🪟 start";
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 18px 2px 14px;
+  background: linear-gradient(to bottom, #56A857 0%, #438A45 50%, #2D7B30 100%);
+  color: #fff;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 1px 1px rgba(0,0,0,.4);
+  border-right: 1px solid #115F0F;
+  border-radius: 0 12px 12px 0;
+  margin-right: auto;
+}
+
+/* Theme pill — Luna 3D button look */
+body[data-theme="xp"]{
+  --pill-bg: linear-gradient(to bottom, #FDFDFD 0%, #E5E5E5 50%, #D2D2D2 100%);
+  --pill-border: 1px solid #003C74;
+  --pill-shadow: inset 0 0 0 1px #fff, 1px 1px 0 rgba(0,0,0,.12);
+  --pill-fg: #000;
+  --pill-radius: 4px;
+  --pill-pad: 6px 10px;
+  --pill-font: 500 11px/1 "Tahoma", Verdana, sans-serif;
+  --pill-indicator: 1.5px solid #003C74;
+  --pill-tip-bg: #FFFFE1;
+  --pill-tip-fg: #000;
+  --pill-tip-border: 1px solid #000;
+  --pill-idle-opacity: .92;
+}
+
+/* Cursor — XP uses the native OS cursor instead of our custom one.
+   The OS already has the iconic Luna arrow + hand-pointer for free.
+   We hide the custom cursor element and override the base cursor.css
+   `cursor: none` rules so links/buttons get the proper system cursor too. */
+body[data-theme="xp"] .brut-cursor-pos{ display: none; }
+body[data-theme="xp"].has-custom-cursor,
+body[data-theme="xp"].has-custom-cursor a,
+body[data-theme="xp"].has-custom-cursor button,
+body[data-theme="xp"].has-custom-cursor [role="button"]{
+  cursor: auto;
+}
+body[data-theme="xp"].has-custom-cursor a,
+body[data-theme="xp"].has-custom-cursor button,
+body[data-theme="xp"].has-custom-cursor [role="button"]{
+  cursor: pointer;
+}
+
+/* Konami toast adapts to XP */
+body[data-theme="xp"] .konami-toast{
+  background: linear-gradient(to bottom, #FDFDFD 0%, #ECE9D8 100%);
+  color: #000;
+  border: 1px solid #003C74;
+  border-radius: 8px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,.4);
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: bold;
+  text-shadow: none;
+}

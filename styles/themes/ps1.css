@@ -1,0 +1,71 @@
+/* PS1 Original — the default look. Token re-statement so theme switching
+   away from PS1 and back is deterministic (the base/tokens.css values are
+   "factory" defaults; this file owns the PS1 *theme*). */
+
+body[data-theme="ps1"]{
+  --ink: #161616;
+  --bg: #CFCDC8;
+  --card: #DCDAD4;
+  --muted: #6a6558;
+  --line: var(--ink);
+
+  --accent-a: #D63A3A;
+  --accent-b: #F4C61F;
+  --accent-c: #3FA34D;
+  --accent-d: #2D6CDF;
+
+  --b: 2.5px;
+  --border-style: solid;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r: var(--r-lg);
+
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  background-color: var(--bg);
+  background-image: none;
+}
+body[data-theme="ps1"]::before{ content: none; display: none; }
+
+/* Theme pill — paper card with brutalist drop-shadow */
+body[data-theme="ps1"]{
+  --pill-bg: #FAF7E8;
+  --pill-border: 2px solid #1B1B1B;
+  --pill-shadow: 4px 4px 0 0 #1B1B1B;
+  --pill-fg: #1B1B1B;
+  --pill-radius: 999px;
+  --pill-pad: 8px 12px;
+  --pill-indicator: 1.5px solid #1B1B1B;
+  --pill-tip-bg: #1B1B1B;
+  --pill-tip-fg: #FAF7E8;
+  --pill-tip-border: 0;
+}
+
+/* Cursor — brutalist filled square + offset gold shadow.
+   Hover swaps to a hollow gold ring that reveals the underlying element.
+   Press dims briefly like a CRT flicker. */
+body[data-theme="ps1"] .brut-cursor{
+  background: #161616;
+  border: 2px solid #161616;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 0 #FFD700;
+  width: 16px;
+  height: 16px;
+  margin: -2px 0 0 -2px;
+}
+body[data-theme="ps1"] .brut-cursor[data-hover="1"]{
+  background: transparent;
+  border: 2.5px solid #161616;
+  box-shadow: 3px 3px 0 0 #FFD700;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+}
+body[data-theme="ps1"] .brut-cursor[data-press="1"]{
+  transform: scale(.86);
+  filter: brightness(.7);
+}

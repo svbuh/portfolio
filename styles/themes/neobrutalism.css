@@ -1,0 +1,283 @@
+/* ─────────────────────────────────────────────────────────────
+   NEOBRUTALISM "MARIO" THEME
+   Knallige Primärfarben, dicke schwarze Outlines, harte Schatten,
+   pixel-coded headlines, ?-Block-Eyebrow-Dots.
+   ───────────────────────────────────────────────────────────── */
+
+body[data-theme="neo"]{
+  --ink: #000000;
+  --bg: #FFE74C;            /* Mario-yellow base color */
+  --card: #FFFFFF;
+  --muted: #2c2c2c;
+  --line: #000000;
+
+  --accent-a: #E5322D;       /* Mario-red */
+  --accent-b: #FFE74C;       /* Coin-yellow */
+  --accent-c: #2EBF4F;       /* Luigi-green */
+  --accent-d: #2D80E2;       /* Sky-blue */
+
+  --b: 4px;                  /* fatter outlines */
+  --border-style: solid;
+
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-lg: 0px;
+  --r: 0px;
+
+  --sh-sm: 6px 6px 0 0 var(--line);
+  --sh: 8px 8px 0 0 var(--line);
+  --sh-lg: 12px 12px 0 0 var(--line);
+
+  --font-display: "Bowlby One", "Press Start 2P", "Arial Black", sans-serif;
+  --font-body: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Press Start 2P", monospace;
+}
+
+/* Background — Mario-block dot grid (75% opacity = paler yellow) */
+body[data-theme="neo"]{
+  background-color: rgba(255, 231, 76, 0.75);
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,.06) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+/* Buttons get heavier */
+body[data-theme="neo"] .btn{
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 14px 24px;
+  font-size: 13px;
+}
+body[data-theme="neo"] .btn-primary{
+  background: var(--accent-a);
+  color: #fff;
+}
+
+/* Hero nav buttons — each one a different colorful block */
+body[data-theme="neo"] .hero-nav .btn{ color: #fff; }
+body[data-theme="neo"] .hero-nav .btn:nth-child(1){ background: var(--accent-d); }
+body[data-theme="neo"] .hero-nav .btn:nth-child(2){ background: var(--accent-c); }
+body[data-theme="neo"] .hero-nav .btn:nth-child(3){ background: var(--accent-b); color: var(--ink); }
+body[data-theme="neo"] .hero-nav .btn:nth-child(4){ background: var(--accent-a); }
+
+/* Cards: pure white on yellow, fat black borders */
+body[data-theme="neo"] .what-card,
+body[data-theme="neo"] .stack-wrap,
+body[data-theme="neo"] .tl-main,
+body[data-theme="neo"] .site-header,
+body[data-theme="neo"] .eyebrow{
+  background: var(--card);
+}
+
+/* Logo mark = Mario red ?-block */
+body[data-theme="neo"] .logo-mark{
+  background: var(--accent-a);
+  color: #fff;
+  font-family: var(--font-display);
+  border-radius: 0;
+}
+
+/* Eyebrow ?-block */
+body[data-theme="neo"] .eyebrow{
+  border-radius: 0;
+  border-width: 3px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+body[data-theme="neo"] .eyebrow .dot{
+  background: var(--accent-a) !important;
+}
+
+/* Hero — chunky pixel headline */
+body[data-theme="neo"] .hero-title{
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7.5vw, 96px);
+  letter-spacing: -0.005em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0;
+}
+body[data-theme="neo"] .hero-title em{
+  font-style: normal;
+  color: var(--accent-a);
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+body[data-theme="neo"] .hw-accent{
+  background: var(--accent-c);
+  color: #fff;
+  border-width: 4px;
+  box-shadow: 6px 6px 0 0 var(--line);
+  transform: rotate(-2deg);
+}
+body[data-theme="neo"] .hero-bg-grid{ display: none; }
+
+/* Section title - chunky. Em part gets the hw-accent "Mario block"
+   treatment so red-on-yellow doesn't vibrate; reads as an intentional
+   colored block like the Hero. Tighter line-height to stop the rotated
+   block from colliding with the next line. */
+body[data-theme="neo"] .sect-title{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 1.18;
+}
+body[data-theme="neo"] .sect-title em{
+  display: inline-block;
+  background: var(--accent-a);
+  color: #fff;
+  border: 4px solid var(--line);
+  box-shadow: 6px 6px 0 0 var(--line);
+  padding: 0 0.18em;
+  margin: 0 0.05em;
+  transform: rotate(-2deg);
+  font-style: normal;
+  font-weight: inherit;
+}
+/* On Contact (red bg) flip the block colors so it stays on-brand */
+body[data-theme="neo"] .contact .sect-title em{
+  background: var(--accent-b);
+  color: var(--ink);
+}
+
+/* Stack chips — pixel feel */
+body[data-theme="neo"] .stack-chip{
+  border-radius: 0;
+  border-width: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+body[data-theme="neo"] .stack-group h4{
+  color: var(--accent-a);
+  font-weight: 700;
+}
+
+/* Timeline — colored dots, chunky bars */
+body[data-theme="neo"] .tl-dot{
+  border-width: 3px;
+  border-radius: 0;
+  background: var(--accent-c);
+}
+body[data-theme="neo"] .tl-item:nth-child(1) .tl-dot{ background: var(--accent-a); }
+body[data-theme="neo"] .tl-item:nth-child(2) .tl-dot{ background: var(--accent-d); }
+body[data-theme="neo"] .tl-item:nth-child(3) .tl-dot{ background: var(--accent-b); }
+body[data-theme="neo"] .tl-item:nth-child(4) .tl-dot{ background: var(--accent-c); }
+
+body[data-theme="neo"] .tl-tags li,
+body[data-theme="neo"] .wc-tags li{
+  border-radius: 0;
+  border-width: 2.5px;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
+
+/* Contact — red panel */
+body[data-theme="neo"] .contact{
+  background: var(--accent-a);
+  color: #fff;
+  box-shadow: 12px 12px 0 0 var(--line);
+}
+body[data-theme="neo"] .contact h2{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+body[data-theme="neo"] .contact h2 em{
+  color: var(--accent-b);
+  font-style: normal;
+}
+body[data-theme="neo"] .c-link:hover{
+  background: var(--accent-b);
+  color: var(--ink);
+}
+
+/* What I do icons get colored backgrounds */
+body[data-theme="neo"] .wc-icon{
+  border-radius: 0;
+  border-width: 3px;
+  background: var(--accent-b);
+}
+body[data-theme="neo"] .wc-card:nth-child(2) .wc-icon{ background: var(--accent-c); color: #fff; }
+body[data-theme="neo"] .wc-card:nth-child(3) .wc-icon{ background: var(--accent-d); color: #fff; }
+body[data-theme="neo"] .wc-card:nth-child(4) .wc-icon{ background: var(--accent-a); color: #fff; }
+
+body[data-theme="neo"] .wc-num{
+  border-radius: 0;
+  border-width: 2.5px;
+  font-weight: 700;
+}
+
+body[data-theme="neo"] .wc-title{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+body[data-theme="neo"] .tl-role{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+body[data-theme="neo"] .logo-word{
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+body[data-theme="neo"] .nav-cta{
+  background: var(--accent-a);
+  color: #fff !important;
+  border-radius: 0 !important;
+  border: 3px solid var(--line);
+  font-weight: 700;
+}
+
+/* Theme pill — fat yellow card, thick black border, offset shadow */
+body[data-theme="neo"]{
+  --pill-bg: #FFE74C;
+  --pill-border: 2.5px solid #000;
+  --pill-shadow: 4px 4px 0 0 #000;
+  --pill-fg: #000;
+  --pill-radius: 4px;
+  --pill-pad: 8px 12px;
+  --pill-dot-radius: 3px;
+  --pill-indicator-radius: 3px;
+  --pill-indicator: 2px solid #000;
+  --pill-tip-bg: #000;
+  --pill-tip-fg: #FFE74C;
+  --pill-tip-border: 2px solid #000;
+}
+
+/* Cursor — Mario pixel arrow with thick black outline + offset coin-yellow
+   drop-shadow. SVG (not clip-path) so the outline follows the polygon edges,
+   not just the bounding box. Press collapses the displaced shadow flat. */
+body[data-theme="neo"] .brut-cursor{
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 22' xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges'%3E%3Cpath d='M2 2 L2 16 L5 13 L8 19 L11 18 L8 12 L14 12 Z' fill='%23E63946' stroke='%23000' stroke-width='2' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: 14px;
+  height: 18px;
+  margin: -2px 0 0 -2px;
+  filter: drop-shadow(2px 2px 0 #FFD700);
+}
+body[data-theme="neo"] .brut-cursor[data-hover="1"]{
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 22 26' xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges'%3E%3Cpath d='M2 2 L2 19 L6 16 L9 23 L13 22 L9 14 L17 14 Z' fill='%23FFD700' stroke='%23000' stroke-width='2.2' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  width: 18px;
+  height: 22px;
+  margin: -2px 0 0 -2px;
+  filter: drop-shadow(2px 2px 0 #E63946);
+}
+body[data-theme="neo"] .brut-cursor[data-press="1"]{
+  transform: scale(.84);
+  filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+}

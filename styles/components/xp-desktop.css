@@ -1,0 +1,225 @@
+/* ─────────────────────────────────────────────────────────────
+   XP DESKTOP  ·  rendered ONLY when theme === "xp"
+   ───────────────────────────────────────────────────────────── */
+
+/* Lock body scroll only when XP-desktop layout is active */
+body[data-theme="xp"]{
+  overflow: hidden;
+}
+body[data-theme="xp"] .page{
+  padding-bottom: 0;
+}
+
+.xp-desktop{
+  position: fixed;
+  inset: 0 0 32px 0;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* ── Desktop icons (left column) ──────────────────────── */
+.desk-icons{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 6;
+}
+.desk-icon{
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px dotted transparent;
+  padding: 4px;
+  cursor: pointer;
+  font-family: "Tahoma", Verdana, sans-serif;
+  font-size: 11px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.9), 0 0 4px rgba(0,0,0,.6);
+}
+.desk-icon-glyph{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,.5));
+}
+.desk-icon-glyph .xp-glyph-img{ display: block; }
+.desk-icon-label{
+  text-align: center;
+  padding: 1px 4px;
+  border-radius: 2px;
+  word-break: break-word;
+  line-height: 1.15;
+}
+.desk-icon.is-selected .desk-icon-label{
+  background: #1955BD;
+  color: #fff;
+  text-shadow: none;
+  outline: 1px dotted rgba(255,255,255,.6);
+}
+.desk-icon.is-selected{
+  border-color: rgba(255,255,255,.4);
+  background: rgba(49, 106, 197, 0.15);
+}
+
+/* ── Floating windows on desktop ──────────────────────── */
+.xp-desk-window{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  min-height: 200px;
+  background: #ECE9D8;
+  border: 1px solid #003C74;
+  border-radius: 8px 8px 0 0;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    0 4px 10px rgba(0,0,0,.2);
+  overflow: hidden;
+}
+.xp-desk-window.is-inactive .xp-titlebar{
+  background: linear-gradient(to bottom,
+    #7F9DDC 0%,
+    #6B89C8 50%,
+    #6080BC 100%);
+  filter: saturate(0.6);
+}
+.xp-desk-window.is-max{
+  border-radius: 0;
+}
+
+/* Body inside desk-window scrolls internally */
+.xp-desk-body{
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 20px 24px 28px;
+  position: relative;
+}
+
+/* ── Sections inside desktop windows: STRIP outer chrome ── */
+.xp-desk-body section{
+  padding: 0 !important;
+  background: transparent !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+.xp-desk-body .hero{
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+.xp-desk-body .hero-centered{
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100% - 8px) !important;
+}
+.xp-desk-body .hero-center{
+  padding: 0 !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.xp-desk-body .hero-title,
+.xp-desk-body .hero-pill,
+.xp-desk-body .hero-lede{
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.xp-desk-body .cta-row{
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+  margin-bottom: 0 !important;
+  margin-top: 18px !important;
+}
+.xp-desk-body .hero-title{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.xp-desk-body .hero-bg-grid{ display: none !important; }
+
+/* Force-show framer-motion-animated elements inside windows.
+   Animations get stuck at opacity:0 when sections remount on theme switch. */
+.xp-desk-body .hw,
+.xp-desk-body .hero-nav,
+.xp-desk-body .what-card,
+.xp-desk-body .stack-group,
+.xp-desk-body .stack-chip,
+.xp-desk-body .tl-item,
+.xp-desk-body [style*="opacity: 0"]{
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Make headings/text scale down to fit window */
+.xp-desk-body .hero-title{
+  font-size: clamp(28px, 5vw, 64px) !important;
+  line-height: 1.05 !important;
+}
+.xp-desk-body .section-head h2,
+.xp-desk-body h2{
+  font-size: clamp(22px, 3.5vw, 44px) !important;
+  line-height: 1.1 !important;
+}
+.xp-desk-body .section-head{
+  margin-bottom: 16px !important;
+}
+
+/* Grids: collapse to single column when window is narrow */
+.xp-desk-body .what-grid,
+.xp-desk-body .stack-groups{
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+@media (min-width: 600px){
+  .xp-desktop .xp-desk-window:not(.narrow) .xp-desk-body .what-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .xp-desktop .xp-desk-window:not(.narrow) .xp-desk-body .stack-groups{
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Hero CTA row — always wrap */
+.xp-desk-body .cta-row{
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+/* Marquee + footer don't belong inside windows */
+.xp-desk-body .marquee,
+.xp-desk-body .site-footer{ display: none !important; }
+
+/* Cursor on titlebar */
+.xp-desk-window .xp-titlebar{ cursor: grab; }
+.xp-desk-window .xp-titlebar:active{ cursor: grabbing; }
+
+/* Minimized task button — italic + paler */
+.xp-task-min{
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Hide cursor's custom shapes outside the body */
+body[data-theme="xp"] .xp-desktop .marquee{ display: none; }
+
+/* Window centered when first opening on a small screen */
+@media (max-width: 920px){
+  .desk-icons{ top: 8px; left: 8px; gap: 8px; }
+  .desk-icon{ width: 64px; }
+  .desk-icon-glyph{ font-size: 28px; }
+}

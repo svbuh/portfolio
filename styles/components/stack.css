@@ -1,0 +1,48 @@
+/* Stack — single card with 3 grouped chip lists */
+
+.stack-wrap{
+  background: var(--card);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  padding: 32px;
+}
+.stack-groups{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+@media (max-width: 760px){ .stack-groups{ grid-template-columns: 1fr; } }
+
+.stack-group h4{
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--line);
+}
+
+.stack-chips{
+  display: flex; flex-wrap: wrap; gap: 8px;
+  list-style: none; margin: 0; padding: 0;
+}
+.stack-chip{
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 500;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: var(--b) var(--border-style) var(--line);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 0 var(--line);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.stack-chip:hover{ transform: translate(-2px,-2px); box-shadow: 5px 5px 0 0 var(--line); }
+.stack-chip .sw{
+  width: 10px; height: 10px; border-radius: 2px;
+  border: 1.5px solid var(--line);
+}
+
+@media (max-width: 760px){
+  .stack-group{ padding: 16px; }
+}

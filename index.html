@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sven Buhre — Software Architect (iSAQB)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/index.css?v=20" />
+
+<script>
+  // Tweakable palette — host rewrites this block on disk when user edits.
+  window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "theme": "ps1"
+  }/*EDITMODE-END*/;
+  // Resolve initial theme synchronously (localStorage > TWEAK_DEFAULTS > "ps1")
+  // and apply on <body> as soon as it exists, to avoid a flash on reload.
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem("portfolio:theme"); } catch (_) {}
+    var theme = stored || (window.TWEAK_DEFAULTS && window.TWEAK_DEFAULTS.theme) || "ps1";
+    window.__INITIAL_THEME = theme;
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.setAttribute("data-theme", theme);
+    });
+  })();
+</script>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Framer Motion (UMD build that exposes window.Motion) -->
+<script src="https://unpkg.com/framer-motion@10.18.0/dist/framer-motion.js"></script>
+<script>
+  // Re-export onto window so Babel-transpiled scripts can grab them.
+  (function () {
+    var FM = window.Motion || window.FramerMotion || window.framerMotion;
+    if (!FM) {
+      console.error("Framer Motion failed to load");
+      return;
+    }
+    window.motion = FM.motion;
+    window.AnimatePresence = FM.AnimatePresence;
+    window.useScroll = FM.useScroll;
+    window.useSpring = FM.useSpring;
+    window.useTransform = FM.useTransform;
+    window.useInView = FM.useInView;
+    window.useMotionValue = FM.useMotionValue;
+  })();
+</script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="components/icons.jsx"></script>
+<script type="text/babel" src="components/themes.jsx"></script>
+<script type="text/babel" src="components/Frames.jsx"></script>
+<script type="text/babel" src="components/ThemeBackdrop.jsx"></script>
+<script type="text/babel" src="components/Cursor.jsx"></script>
+<script type="text/babel" src="components/WindowManager.jsx"></script>
+<script type="text/babel" src="components/DesktopWindow.jsx"></script>
+<script type="text/babel" src="components/Desktop.jsx"></script>
+<script type="text/babel" src="components/Marquee.jsx"></script>
+<script type="text/babel" src="components/SectionHead.jsx"></script>
+<script type="text/babel" src="components/Header.jsx"></script>
+<script type="text/babel" src="components/Hero.jsx"></script>
+<script type="text/babel" src="components/Cases.jsx"></script>
+<script type="text/babel" src="components/WhatIDo.jsx"></script>
+<script type="text/babel" src="components/Stack.jsx"></script>
+<script type="text/babel" src="components/Timeline.jsx"></script>
+<script type="text/babel" src="components/Contact.jsx"></script>
+<script type="text/babel" src="components/Konami.jsx"></script>
+<script type="text/babel" src="components/XPTaskbar.jsx"></script>
+<script type="text/babel" src="components/ThemePill.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

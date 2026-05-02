@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="pin-shine" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#FF8F8F"/>
+      <stop offset="60%" stop-color="#D63A3A"/>
+      <stop offset="100%" stop-color="#7A1414"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="16" cy="27" rx="5" ry="1.5" fill="rgba(0,0,0,.25)"/>
+  <path d="M16 4 C 10 4, 6 8, 6 13 C 6 19, 16 28, 16 28 C 16 28, 26 19, 26 13 C 26 8, 22 4, 16 4 Z" fill="url(#pin-shine)" stroke="#5A1010" stroke-width="1"/>
+  <circle cx="16" cy="13" r="3.5" fill="#fff" stroke="#7A1414" stroke-width=".8"/>
+</svg>
