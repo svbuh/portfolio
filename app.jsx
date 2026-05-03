@@ -2,12 +2,24 @@
 const { useState, useEffect } = React;
 
 // Tracks viewport width so we can swap layouts at the laptop breakpoint.
+// Only re-renders when actually crossing the 1024px boundary — otherwise
+// every iOS-Safari URL-bar collapse fires a `resize` event, which would
+// re-render the whole app tree (including <ThemeBackdrop>) on every
+// scroll-direction change and trigger an XP fixed-layer repaint. With
+// this guard, ordinary scrolls don't re-render anything.
 function useViewport() {
   const [w, setW] = React.useState(() =>
     typeof window !== "undefined" ? window.innerWidth : 1280
   );
   React.useEffect(() => {
-    const onResize = () => setW(window.innerWidth);
+    const onResize = () => {
+      setW((prev) => {
+        const next = window.innerWidth;
+        const wasDesktop = prev >= 1024;
+        const isDesktop = next >= 1024;
+        return wasDesktop === isDesktop ? prev : next;
+      });
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -59,24 +71,6 @@ function App() {
 
       <ThemePill theme={theme} onChange={setTheme} />
 
-      {useXPDesktop ? (
-        <XPTaskbar />
-      ) : (
-        <footer className="site-footer">
-          <div className="sig">
-            <span className="d" /> © 2026 Sven Buhre ·{" "}
-            <a
-              href="https://www.google.com/maps/place/Celle,+Germany"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="loc-link"
-            >
-              Celle, DE ↗
-            </a>
-          </div>
-        </footer>
-      )}
-
       <TweaksPanel title="Theme">
         <TweakSection label="Pick a vibe" />
         <div className="theme-switch">
@@ -122,6 +116,29 @@ function App() {
         </div>
       </TweaksPanel>
     </div>
+
+    {/* Footer / XP taskbar lives OUTSIDE .page so its width and bottom
+        edge aren't constrained by .page's max-width + bottom-padding.
+        XP always gets the real <XPTaskbar> (interactive Start button +
+        menu), regardless of viewport — on desktop it's fixed at the
+        bottom, on mobile it flows at the end of the document. */}
+    {theme === "xp" ? (
+      <XPTaskbar />
+    ) : (
+      <footer className="site-footer">
+        <div className="sig">
+          <span className="d" /> © 2026 Sven Buhre ·{" "}
+          <a
+            href="https://www.google.com/maps/place/Celle,+Germany"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="loc-link"
+          >
+            Celle, DE ↗
+          </a>
+        </div>
+      </footer>
+    )}
     </WindowManagerProvider>
     </ThemeContext.Provider>
   );

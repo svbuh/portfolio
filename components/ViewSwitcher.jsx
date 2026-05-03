@@ -34,40 +34,60 @@ function ViewSwitcher() {
   }, []);
 
   // Track which section is in view → update URL hash.
-  // Debounced so a fast flick on mobile doesn't fire replaceState
-  // dozens of times mid-scroll (which can trigger reflow / jank).
+  //
+  // Only fires AFTER scroll has truly ended, never mid-scroll. Why:
+  // calling history.replaceState() during scroll causes iOS Safari to
+  // briefly surface the URL bar (showing the new #hash), which looks
+  // like a page reload/loading indicator and breaks the immersive
+  // feel. Listening to the native `scrollend` event (Safari 18+,
+  // Chrome 114+, Firefox 109+) is the cleanest signal; older browsers
+  // get a 350ms post-scroll-idle fallback.
   React.useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
     const targets = VIEW_IDS
       .map((id) => document.getElementById(id))
       .filter(Boolean);
     if (!targets.length) return;
-    let pendingId = null;
-    let timer = null;
-    const flush = () => {
-      if (!pendingId) return;
-      const next = pendingId === "home" ? "" : `#${pendingId}`;
-      if (window.location.hash !== next) {
-        history.replaceState(null, "", next || window.location.pathname);
-      }
-      pendingId = null;
-    };
+
+    let visibleId = null;
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting && e.intersectionRatio >= 0.6) {
-            pendingId = e.target.id;
+            visibleId = e.target.id;
           }
         });
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(flush, 180);
       },
       { threshold: [0.6] }
     );
     targets.forEach((el) => obs.observe(el));
+
+    const flush = () => {
+      if (!visibleId) return;
+      const next = visibleId === "home" ? "" : `#${visibleId}`;
+      if (window.location.hash !== next) {
+        history.replaceState(null, "", next || window.location.pathname);
+      }
+    };
+
+    if ("onscrollend" in window) {
+      window.addEventListener("scrollend", flush);
+      return () => {
+        obs.disconnect();
+        window.removeEventListener("scrollend", flush);
+      };
+    }
+
+    let idleTimer = null;
+    const onScroll = () => {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(flush, 350);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       obs.disconnect();
-      if (timer) clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+      if (idleTimer) clearTimeout(idleTimer);
     };
   }, []);
 

@@ -39,11 +39,17 @@
   padding: 0 4px;
 }
 
+/* Single canonical scale for the hero headline. Was previously two
+   different clamps (small for mobile + larger for desktop) marked
+   `!important`, which forced every theme to also use !important to
+   override and made PS1/Neo/XP all inherit the desktop value (which
+   reads as too big). One clamp scales smoothly across all widths and
+   themes can override without `!important`. */
 .hero-title{
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(44px, 13vw, 72px) !important;
-  line-height: 0.98 !important;
+  font-size: clamp(44px, 7.5vw, 96px);
+  line-height: 1.02;
   letter-spacing: -0.02em;
   margin: 22px 0 22px;
   font-weight: 400;
@@ -89,6 +95,5 @@
 
 @media (min-width: 640px){
   .hero-center{ padding: 0; }
-  .hero-title{ font-size: clamp(64px, 10vw, 140px) !important; line-height: 1.02 !important; }
   .hero-lede{ font-size: 17px !important; }
 }

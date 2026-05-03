@@ -1,12 +1,28 @@
-/* Footer */
+/* Footer
+   Lives outside .page (sibling) so its width and bottom edge aren't
+   constrained by .page's max-width + bottom padding. The footer
+   self-centers at the same max-width as .page and brings its own
+   horizontal gutter, so visually it lines up with .page content. */
 
 .site-footer{
-  margin-top: 56px;
-  padding-top: 22px;
+  /* Sits outside .page, so it doesn't inherit .page's z-index: 1.
+     Without its own stacking context the XP/N64 fixed backdrops
+     (z-index: 0) would paint over it. */
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 56px auto 0;
+  padding: 22px 14px 24px;
   border-top: 2px dashed var(--line);
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-mono); font-size: 12px; color: var(--muted);
 }
+@media (min-width: 640px){
+  .site-footer{
+    padding: 22px var(--gutter) 32px;
+  }
+}
+
 .site-footer .sig{ display: flex; align-items: center; gap: 8px; }
 .site-footer .sig span.d{
   width: 6px; height: 6px; border-radius: 50%;

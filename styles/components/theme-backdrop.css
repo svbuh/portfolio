@@ -12,7 +12,25 @@
 }
 
 /* ═══════════ Bliss / Windows XP ═══════════ */
-/* The real Charles O'Rear photo, full-bleed cover. */
+/* The real Charles O'Rear photo, full-bleed cover.
+
+   Mobile-Safari fix: with the photo `<img>` sitting in a fixed-position
+   container that uses `inset: 0`, every time the URL bar collapses or
+   reappears the container resizes → `object-fit: cover` re-rasterizes
+   the (large) photo → visible lag/flicker during scroll. Promoting both
+   the backdrop and the image to their own GPU composite layer with
+   `translateZ(0)` makes the browser cache the rasterized photo as a
+   texture and only translate the layer on bar transitions, instead of
+   repainting it. `contain: paint` further isolates the layer so it
+   doesn't trigger surrounding repaints. */
+
+.bliss-backdrop {
+  transform: translateZ(0);
+  will-change: transform;
+  contain: paint;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
 .bliss-photo {
   position: absolute;
@@ -22,6 +40,8 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* ═══════════ Nintendo 64 — Funtastic colorful ═══════════

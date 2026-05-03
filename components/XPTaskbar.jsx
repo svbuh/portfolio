@@ -5,12 +5,36 @@
 function XPTaskbar() {
   const [open, setOpen] = React.useState(false);
   const [time, setTime] = React.useState(() => fmtTime());
+  const [isDesktop, setIsDesktop] = React.useState(
+    typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(min-width: 1024px)").matches
+      : true
+  );
   const menuRef = React.useRef(null);
   const wm = useWM();
 
   React.useEffect(() => {
     const t = setInterval(() => setTime(fmtTime()), 30 * 1000);
     return () => clearInterval(t);
+  }, []);
+
+  // Track whether we're at the desktop breakpoint where actual draggable
+  // windows are rendered. Below that, the WindowManager state still
+  // exists (home is "open" by default) but no DesktopWindow components
+  // mount it visually — so showing task buttons or routing nav through
+  // wm.open() would be misleading. Mobile/tablet falls back to plain
+  // scroll navigation and hides the tasks area entirely.
+  React.useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    if (mq.addEventListener) mq.addEventListener("change", update);
+    else mq.addListener(update);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", update);
+      else mq.removeListener(update);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -32,7 +56,17 @@ function XPTaskbar() {
 
   const goWin = (id) => {
     setOpen(false);
-    wm.open(id);
+    // Desktop: open/focus the actual windowed view. Mobile/tablet: no
+    // DesktopWindow components mount, so route via plain scroll.
+    if (isDesktop) {
+      wm.open(id);
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (history && history.replaceState) {
+      history.replaceState(null, "", id === "home" ? "#" : "#" + id);
+    }
   };
 
   // Sort windows by id for stable taskbar order
@@ -106,8 +140,12 @@ function XPTaskbar() {
         <span className="xp-start-label">start</span>
       </button>
 
+      {/* Tasks area: only render task buttons when actual windows exist
+          (desktop). On mobile/tablet there's nothing to manage so the
+          area stays empty (still rendered as the flex spacer between
+          Start and tray, which keeps the visual rhythm intact). */}
       <div className="xp-tasks">
-        {tasks.map((w) => (
+        {isDesktop && tasks.map((w) => (
           <button
             key={w.id}
             className={

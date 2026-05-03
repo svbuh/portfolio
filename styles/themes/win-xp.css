@@ -58,6 +58,27 @@ body[data-theme="xp"] .page{ position: relative; z-index: 1; }
   font-size: 11px;
   color: #000;
 }
+/* Mobile: keep the xp-window chrome (titlebar, body, border) — that's
+   the XP look the user wants — but lighten the heavy 4×4×12 drop
+   shadow + rounded clip. Five large soft shadows over the fixed
+   bliss-photo backdrop drop frames during scroll on mobile Safari.
+   A flat 1px shadow gives the same "framed" feel without the
+   compositor cost.
+   Also: zero the xp-body horizontal padding so content inside the
+   window aligns with the section head (which sits OUTSIDE the
+   window). Without this, timeline dots, stack chips, etc. look
+   shifted ~16px to the right of their own section title. */
+@media (max-width: 639px){
+  .xp-window{
+    box-shadow: 0 1px 2px rgba(0,0,0,.18);
+    border-radius: 0;
+    overflow: visible;
+  }
+  .xp-body{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 .xp-titlebar{
   display: flex; align-items: center; justify-content: space-between;
@@ -441,7 +462,18 @@ body[data-theme="xp"] .tl-dot{
   box-shadow: none;
   width: 14px; height: 14px;
   top: 30px;
-  left: 162px;
+  /* Mobile: center the 14px dot on the 1px XP track at left:11px.
+     Track center = 11.5, dot half-width = 7 → left = 4.5px.
+     (Base .tl-dot { left: 0 } would center the default 22px dot; the
+     smaller XP dot needs its own offset.) */
+  left: 4.5px;
+}
+@media (min-width: 640px){
+  body[data-theme="xp"] .tl-dot{
+    /* Desktop track at left:168px width:1px (center 168.5),
+       dot left = 168.5 - 7 = 161.5 ≈ 162px */
+    left: 162px;
+  }
 }
 body[data-theme="xp"] .tl-pulse{ display: none; }
 body[data-theme="xp"] .tl-item[data-current="1"] .tl-dot{
@@ -547,56 +579,10 @@ body[data-theme="xp"] .c-link:hover{
 }
 body[data-theme="xp"] .c-link:hover .k{ color: rgba(255,255,255,.7); }
 
-/* ── Footer = Windows Taskbar ────────────────────────── */
-body[data-theme="xp"] .site-footer{
-  position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  margin: 0;
-  padding: 0 4px 0 0;
-  height: 30px;
-  background: linear-gradient(to bottom, #245EDB 0%, #1F4FB7 8%, #245EDB 50%, #1F4FB7 100%);
-  border-top: 1px solid #0831D9;
-  color: #fff;
-  font-family: "Tahoma", Verdana, sans-serif;
-  font-size: 11px;
-  z-index: 9998;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0;
-}
-body[data-theme="xp"] .site-footer .sig{
-  margin-right: 8px;
-}
-body[data-theme="xp"] .site-footer .sig span.d{
-  background: #4FB13F;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.3);
-}
-body[data-theme="xp"] .loc-link{
-  border-bottom: 1px dotted rgba(255,255,255,.5);
-}
-body[data-theme="xp"] .page{ padding-bottom: 64px; }
-
-/* Start button (left side of footer/taskbar) */
-body[data-theme="xp"] .site-footer::before{
-  content: "🪟 start";
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 30px;
-  padding: 0 18px 2px 14px;
-  background: linear-gradient(to bottom, #56A857 0%, #438A45 50%, #2D7B30 100%);
-  color: #fff;
-  font-family: "Trebuchet MS", Tahoma, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  text-shadow: 1px 1px rgba(0,0,0,.4);
-  border-right: 1px solid #115F0F;
-  border-radius: 0 12px 12px 0;
-  margin-right: auto;
-}
+/* (XP renders the real <XPTaskbar> on every viewport now — no fake
+   footer-as-taskbar styling needed. The Start button, Start menu,
+   tray clock and tasks area all live in components/XPTaskbar.jsx +
+   styles/components/xp-taskbar.css.) */
 
 /* Theme pill — Luna 3D button look */
 body[data-theme="xp"]{

@@ -122,11 +122,9 @@ body[data-theme="n64"] .nav-cta{
 body[data-theme="n64"] .hero-bg-grid{ display: none; }
 body[data-theme="n64"] .hero-title{
   font-family: var(--font-display);
-  /* Match Neo/PS1 visual scale; the heavy stroke + shadow already make
-     N64 read bigger, so tone down the raw font-size to compensate. */
-  font-size: clamp(44px, 7.5vw, 96px) !important;
+  /* font-size + line-height inherited from the canonical .hero-title
+     in hero.css (the same clamp every theme now uses). */
   letter-spacing: -0.02em;
-  line-height: 1.02 !important;
   color: var(--n64-yellow);
   -webkit-text-stroke: 2.2px #000;
   text-shadow:

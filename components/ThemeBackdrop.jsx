@@ -11,7 +11,23 @@ function ThemeBackdrop({ theme }) {
 function BlissBackdrop() {
   return (
     <div className="bliss-backdrop" aria-hidden="true">
-      <img className="bliss-photo" src="assets/bliss.jpg" alt="" />
+      {/* width/height attributes reserve the intrinsic aspect ratio so a
+          late JPEG decode doesn't trigger a fixed-layer relayout — that
+          relayout is the canonical iOS-Safari "URL-bar pops back mid-
+          scroll" trigger. Mobile gets a 1200x800 / ~120 KB variant
+          instead of the desktop 4500x3000 / 1.6 MB original. */}
+      <picture>
+        <source media="(max-width: 900px)" srcSet="assets/bliss-mobile.jpg" />
+        <img
+          className="bliss-photo"
+          src="assets/bliss.jpg"
+          alt=""
+          width="4500"
+          height="3000"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
   );
 }

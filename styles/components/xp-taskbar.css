@@ -5,10 +5,19 @@
    ───────────────────────────────────────────────────────────── */
 
 .xp-taskbar{
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
+  /* Mobile: flow at end of document (no fixed-bottom fight with iOS
+     Safari's bottom toolbar). Desktop: pinned to viewport bottom like
+     the real Windows taskbar.
+     No `z-index` on mobile — z-index on a positioned element creates
+     a stacking context, which means the browser has to promote/
+     composite the taskbar layer when it enters the viewport mid-
+     scroll. That's an extra paint event during scroll on mobile
+     Safari and makes the scroll feel slightly different than the
+     other themes. The taskbar doesn't overlap anything in flow
+     mode anyway, so the z-index isn't needed. */
+  position: relative;
+  left: 0; right: 0;
   height: 32px;
-  z-index: 1000;
   display: flex;
   align-items: stretch;
   /* Classic XP Luna blue gradient */
@@ -27,6 +36,13 @@
   color: #fff;
   user-select: none;
   box-shadow: 0 -1px 0 rgba(255,255,255,.25) inset;
+}
+@media (min-width: 640px){
+  .xp-taskbar{
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+  }
 }
 
 /* ── Start button — green Luna ────────────────────────── */
@@ -253,7 +269,13 @@
 .xp-sm-loc-icon{ display: inline-flex; align-items: center; }
 .xp-sm-loc-icon .xp-glyph-img{ display: block; }
 
-/* ── Page bottom-padding so content isn't hidden under taskbar ── */
-body[data-theme="xp"] .page{
-  padding-bottom: 40px;
+/* ── Page bottom-padding so content isn't hidden under the
+   fixed taskbar. Only applies where a fixed taskbar actually
+   exists — on mobile (<640) the XP footer flows in normal
+   document order, so no extra padding is needed (and adding any
+   would leave the footer "floating" above empty space). */
+@media (min-width: 640px){
+  body[data-theme="xp"] .page{
+    padding-bottom: 40px;
+  }
 }

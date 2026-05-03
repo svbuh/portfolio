@@ -4,6 +4,18 @@
 html, body{ margin: 0; padding: 0; }
 html{ scroll-behavior: smooth; }
 
+/* Forbid horizontal scroll at the root. The site is vertical-only;
+   any side-scroll is an accident — usually a rotated/shadowed
+   decorative element (.hw-accent rotate + 4px box-shadow, Neo's
+   uppercase rotated headline em, etc.) leaking a few pixels past
+   the viewport edge on narrow screens. `overflow-x: clip` is the
+   modern correct value: it visually crops without creating a scroll
+   container, so it doesn't affect `position: fixed` descendants
+   like ThemeBackdrop or the cursor layer. */
+html, body{
+  overflow-x: clip;
+}
+
 body{
   background: var(--bg);
   color: var(--ink);
@@ -13,6 +25,14 @@ body{
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: var(--theme-transition);
+}
+/* Mobile: drop the body color/background-color transition. Animating
+   the root background interpolates a full-viewport repaint, which iOS
+   Safari reads as "page is busy" and uses as a signal to re-show the
+   URL bar. The cross-fade only matters on theme switch, which is rare
+   enough on touch that losing it is the right tradeoff. */
+@media (max-width: 639px){
+  body{ transition: none; }
 }
 
 a{ color: inherit; }

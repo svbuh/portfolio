@@ -107,29 +107,42 @@
   transform: translateX(-50%) translateY(0);
 }
 
-/* On XP the bottom edge is the taskbar — dock pill top-right and
-   flip the tooltip to point downward. */
-body[data-theme="xp"] .theme-pill{
-  left: auto;
-  bottom: auto;
-  top: 16px;
-  right: 16px;
+/* XP positioning depends on viewport:
+     • Desktop (>=640): top-right, away from the fixed taskbar at bottom.
+     • Mobile  (<640): bottom-right (user request) — taskbar is in flow
+       at end of document, so bottom-right doesn't conflict during the
+       normal scroll. */
+@media (min-width: 640px){
+  body[data-theme="xp"] .theme-pill{
+    left: auto;
+    bottom: auto;
+    top: 16px;
+    right: 16px;
+  }
+  body[data-theme="xp"] .theme-pill-tip{
+    bottom: auto;
+    top: calc(100% + 8px);
+    transform: translateX(-50%) translateY(-4px);
+  }
+  body[data-theme="xp"] .theme-pill-tip[data-show="1"]{
+    transform: translateX(-50%) translateY(0);
+  }
 }
-body[data-theme="xp"] .theme-pill-tip{
-  bottom: auto;
-  top: calc(100% + 8px);
-  transform: translateX(-50%) translateY(-4px);
-}
-body[data-theme="xp"] .theme-pill-tip[data-show="1"]{
-  transform: translateX(-50%) translateY(0);
-}
-/* Mobile menu flips to drop down from the top-right corner on XP. */
-body[data-theme="xp"] .theme-pill--mobile .theme-pill-menu{
-  left: auto;
-  right: 0;
-  bottom: auto;
-  top: calc(100% + 12px);
-  transform-origin: top right;
+@media (max-width: 639px){
+  body[data-theme="xp"] .theme-pill{
+    top: auto;
+    left: auto;
+    bottom: 16px;
+    right: 16px;
+  }
+  /* Menu anchors to the right edge of the trigger and opens upward. */
+  body[data-theme="xp"] .theme-pill--mobile .theme-pill-menu{
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: calc(100% + 12px);
+    transform-origin: bottom right;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
