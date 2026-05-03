@@ -79,8 +79,11 @@
 }
 .cast-fx{
   position: absolute;
+  /* Same spot on every panel — top-right with a +14° tilt, like
+     Paula's CHEFIN! badge. Color varies per panel for contrast. */
   top: 14px;
-  right: -12px;
+  right: -14px;
+  transform: rotate(14deg);
   background: var(--red);
   color: #fff;
   font-family: var(--display);
@@ -91,11 +94,14 @@
   border-radius: 8px;
   box-shadow: 3px 3px 0 var(--ink);
   text-shadow: 2px 2px 0 var(--ink);
-  transform: rotate(14deg);
 }
-.cast-c2 .cast-fx{ background: var(--ocean); }
-.cast-c4 .cast-fx{ background: var(--grass); }
-.cast-c6 .cast-fx{ background: var(--sun); }
+/* Per-panel burst color — high contrast vs the pastel panel bg. */
+.cast-c1 .cast-fx{ background: var(--red); }      /* yellow panel */
+.cast-c2 .cast-fx{ background: var(--ocean); }    /* pink panel */
+.cast-c3 .cast-fx{ background: var(--red); }      /* green panel */
+.cast-c4 .cast-fx{ background: var(--sun); }      /* blue panel */
+.cast-c5 .cast-fx{ background: var(--ocean); }    /* peach panel */
+.cast-c6 .cast-fx{ background: var(--grass); }    /* lavender panel */
 
 /* ── SPOTS (4 highlight cards under the map) ────────────── */
 .spots-grid{
@@ -146,6 +152,7 @@
 @media (min-width: 720px){ .acts-grid{ grid-template-columns: repeat(2, 1fr); gap: 36px; } }
 @media (min-width: 1100px){ .acts-grid{ grid-template-columns: repeat(3, 1fr); } }
 .act-card{
+  position: relative;
   background: #fff;
   border: var(--b) solid var(--ink);
   border-radius: 16px;
@@ -153,6 +160,25 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+/* Joke card: let the SUCHE! burst stick out past the card edge. */
+.act-joke{ overflow: visible; }
+.act-fx{
+  position: absolute;
+  top: 14px;
+  right: -14px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  padding: 8px 14px;
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--ink);
+  text-shadow: 2px 2px 0 var(--ink);
+  transform: rotate(14deg);
+  z-index: 4;
 }
 .act-img{
   width: 100%;

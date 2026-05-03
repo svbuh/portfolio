@@ -2,18 +2,50 @@
 
 .hero{
   position: relative;
-  background:
-    radial-gradient(ellipse at top right, rgba(255,107,53,.30), transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(26,120,214,.20), transparent 55%),
-    var(--sand);
+  background: var(--sand);
   background-image:
+    /* Comic action lines radiating from upper-left corner */
+    repeating-conic-gradient(
+      from 200deg at 30% 35%,
+      transparent 0deg,
+      transparent 12deg,
+      rgba(0,0,0,.05) 12deg,
+      rgba(0,0,0,.05) 14deg
+    ),
+    /* Halftone dot texture */
     radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px),
-    radial-gradient(ellipse at top right, rgba(255,107,53,.30), transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(26,120,214,.20), transparent 55%);
-  background-size: 16px 16px, auto, auto;
-  padding: 56px 20px 96px;
+    /* Soft color washes */
+    radial-gradient(ellipse at top right, rgba(255,107,53,.32), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(26,120,214,.22), transparent 55%);
+  background-size: auto, 16px 16px, auto, auto;
+  padding: 80px 20px 96px;
   border-bottom: var(--b-thick) solid var(--ink);
   overflow: hidden;
+}
+
+/* Hero FX layer — sparkles scattered around the title for energy. */
+.hero-fx{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-spark{
+  position: absolute;
+  font-family: var(--display);
+  color: var(--sun-bright);
+  text-shadow: 2px 2px 0 var(--ink);
+  user-select: none;
+}
+.hero-spark-1{ top: 12%; left: 4%;  font-size: 42px; transform: rotate(-12deg); color: var(--red); }
+.hero-spark-2{ top: 20%; right: 18%; font-size: 28px; transform: rotate(18deg); color: var(--ocean); }
+.hero-spark-3{ top: 60%; right: 6%; font-size: 36px; transform: rotate(-8deg); }
+.hero-spark-4{ bottom: 22%; left: 20%; font-size: 32px; transform: rotate(14deg); color: var(--purple); }
+.hero-spark-5{ bottom: 8%; right: 28%; font-size: 24px; transform: rotate(-20deg); color: var(--grass); }
+@media (max-width: 720px){
+  .hero-spark-2, .hero-spark-3, .hero-spark-5{ display: none; }
+  .hero-spark-1{ font-size: 28px; }
+  .hero-spark-4{ font-size: 22px; }
 }
 .hero-inner{
   max-width: 920px;

@@ -47,7 +47,17 @@
   text-shadow: 2px 2px 0 var(--ink);
   z-index: 3;
 }
-.bam-1{ top: 24px; right: -10px; transform: rotate(12deg); }
+/* bam-1 carries LE BOMB! (the inside-joke) at the top of the hero
+   and gets bigger/louder than the others. */
+.bam-1{
+  top: 18px;
+  right: -14px;
+  transform: rotate(10deg);
+  font-size: clamp(34px, 8vw, 72px);
+  padding: 14px 24px;
+  border-width: 5px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
 .bam-2{
   bottom: 30px; right: 16px;
   background: var(--ocean);
@@ -60,9 +70,23 @@
   text-shadow: none;
   transform: rotate(-15deg);
 }
+.bam-4{
+  top: 12%; right: 6%;
+  background: var(--grass);
+  transform: rotate(6deg);
+  font-size: clamp(20px, 4vw, 36px);
+  padding: 8px 14px;
+}
+.bam-5{
+  bottom: 18%; left: 8%;
+  background: var(--purple);
+  transform: rotate(-12deg);
+  font-size: clamp(20px, 3.5vw, 32px);
+  padding: 6px 12px;
+}
 @media (max-width: 720px){
-  .bam-1{ font-size: 22px; padding: 8px 14px; right: -6px; }
-  .bam-2, .bam-3{ display: none; }
+  .bam-1{ font-size: 26px; padding: 8px 14px; right: -8px; }
+  .bam-2, .bam-3, .bam-4, .bam-5{ display: none; }
 }
 
 /* Speech bubble — pointer arrow built from two stacked triangles */
@@ -128,3 +152,36 @@
 /* Tilt utilities — slight rotation on cards for comic feel */
 .tilt-l{ transform: rotate(-1.4deg); }
 .tilt-r{ transform: rotate(1.6deg); }
+
+/* Section-FX bursts — tucked into section corners as easter eggs.
+   Smaller cousins of `.bam`. Place via .section-fx-{tl,tr,bl,br}. */
+.section-fx{
+  position: absolute;
+  display: inline-block;
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 36px);
+  letter-spacing: 0.05em;
+  background: var(--red);
+  color: #fff;
+  padding: 8px 14px;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--ink);
+  text-shadow: 2px 2px 0 var(--ink);
+  z-index: 4;
+  pointer-events: none;
+}
+.section-fx-tr{ top: 18px;    right: 12px;  transform: rotate(8deg); }
+.section-fx-tl{ top: 18px;    left: 12px;   transform: rotate(-8deg); }
+.section-fx-br{ bottom: 18px; right: 12px;  transform: rotate(-6deg); }
+.section-fx-bl{ bottom: 18px; left: 12px;   transform: rotate(6deg); }
+.section-fx-bomb{
+  background: var(--red);
+  font-size: clamp(28px, 4.5vw, 48px);
+  padding: 12px 20px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.section-fx-blue{ background: var(--ocean); }
+.section-fx-green{ background: var(--grass); }
+.section-fx-yellow{ background: var(--sun-bright); color: var(--ink); text-shadow: none; }
+.section-fx-purple{ background: var(--purple); }

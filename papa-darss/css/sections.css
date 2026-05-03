@@ -36,6 +36,32 @@
     radial-gradient(circle at 1px 1px, rgba(0,0,0,.12) 1.4px, transparent 1.6px);
   background-size: 16px 16px;
 }
+.section-pink{
+  background: var(--pink-soft);
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+.section-yellow{
+  background: var(--yellow-soft);
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+.section-purple{
+  background: var(--purple-soft);
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+
+/* Map h2-num colors for new section variants. */
+.section-pink .h2-num{ background: var(--ocean); color: #fff; }
+.section-yellow .h2-num{ background: var(--red); color: #fff; }
+.section-purple .h2-num{ background: var(--sun); color: #fff; }
 
 .h2{
   font-family: var(--display);

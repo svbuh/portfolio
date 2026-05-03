@@ -6,16 +6,13 @@
 <meta name="robots" content="noindex, nofollow" />
 <title>Ein Geschenk für Papa — Darß-Wochenende</title>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" />
 
-<!-- Modular CSS — one file per concern, loaded in parallel. -->
 <link rel="stylesheet" href="/papa-darss/css/tokens.css" />
 <link rel="stylesheet" href="/papa-darss/css/base.css" />
 <link rel="stylesheet" href="/papa-darss/css/comic.css" />
-<link rel="stylesheet" href="/papa-darss/css/decor.css" />
 <link rel="stylesheet" href="/papa-darss/css/sections.css" />
 <link rel="stylesheet" href="/papa-darss/css/hero.css" />
 <link rel="stylesheet" href="/papa-darss/css/cards.css" />
@@ -28,76 +25,72 @@
 
 <!-- ===== HERO ===== -->
 <header class="hero">
-  <div class="clouds" aria-hidden="true">
-    <svg class="cloud cloud-1" viewBox="0 0 120 60" fill="#fff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
-      <path d="M22 48 C8 48 4 36 14 30 C12 18 28 14 34 22 C42 10 62 10 66 22 C82 12 98 22 96 34 C112 32 116 48 100 48 Z"/>
-    </svg>
-    <svg class="cloud cloud-2" viewBox="0 0 100 50" fill="#fff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
-      <path d="M16 40 C4 40 2 28 12 24 C12 14 28 12 32 20 C40 8 60 12 60 22 C76 16 90 26 84 36 C92 38 92 44 80 42 Z"/>
-    </svg>
-    <svg class="cloud cloud-3" viewBox="0 0 90 46" fill="#fff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
-      <path d="M14 36 C2 36 0 24 10 22 C10 12 26 12 30 18 C40 8 58 12 58 22 C70 18 80 24 76 32 C84 32 84 38 74 38 Z"/>
-    </svg>
+  <!-- Comic FX layer: scattered sparkles around the title for energy. -->
+  <div class="hero-fx" aria-hidden="true">
+    <span class="hero-spark hero-spark-2">✦</span>
+    <span class="hero-spark hero-spark-3">★</span>
+    <span class="hero-spark hero-spark-4">✺</span>
+    <span class="hero-spark hero-spark-5">★</span>
   </div>
 
   <div class="hero-inner">
-    <span class="hero-badge"><svg class="i"><use href="#i-gift"/></svg> Ein Geschenk für Papa</span>
+    <span class="hero-badge">Ein Geschenk für Papa</span>
     <h1 class="hero-title">Wir entführen<br/>dich an den<br/><span class="hl hl-orange">Darß!</span></h1>
 
     <div class="speech speech-right">
       <p>Pack die Wanderschuhe ein, Papa.</p>
     </div>
-
-    <div class="hero-meta">
-      <span class="chip"><svg class="i"><use href="#i-calendar"/></svg> September 2026</span>
-      <span class="chip"><svg class="i"><use href="#i-pine"/></svg> Fischland-Darß-Zingst</span>
-      <span class="chip"><svg class="i"><use href="#i-bed"/></svg> Eine Übernachtung</span>
-    </div>
   </div>
-  <span class="bam bam-1">BÄM!</span>
+
+  <span class="bam bam-1">LE BOMB!</span>
   <span class="bam bam-2">JIPPIE!</span>
   <span class="bam bam-3">WUSCH!</span>
+  <span class="bam bam-4">KAWUMM!</span>
+  <span class="bam bam-5">ZONG!</span>
 </header>
 
 <main>
 
-<!-- ===== 01 · DIE TRUPPE — Cast Page ===== -->
-<section class="section section-cream">
+<!-- ===== 01 · DIE TRUPPE ===== -->
+<section class="section section-yellow">
   <h2 class="h2"><span class="h2-num">01</span> Die Truppe</h2>
-  <p class="lede">Sechs Helden gegen den Darß.</p>
+  <p class="lede">Sieben Helden gegen den Darß. Du bist einer davon.</p>
 
   <div class="cast-grid">
 
     <article class="cast-panel cast-c1 tilt-l">
       <span class="cast-num">#1</span>
-      <h3 class="cast-name">Anna</h3>
-      <span class="cast-tag">Stets im Stechschritt</span>
+      <h3 class="cast-name">Paula</h3>
+      <span class="cast-tag">Die Wander-Anführerin</span>
+      <span class="cast-fx">CHEFIN!</span>
     </article>
 
     <article class="cast-panel cast-c2 tilt-r">
       <span class="cast-num">#2</span>
-      <h3 class="cast-name">Paula</h3>
-      <span class="cast-tag">Wird geschoben! (Baby)</span>
-      <span class="cast-fx">BABY!</span>
+      <h3 class="cast-name">Anna</h3>
+      <span class="cast-tag">Stets im Stechschritt</span>
+      <span class="cast-fx">ZACK!</span>
     </article>
 
     <article class="cast-panel cast-c3 tilt-l">
       <span class="cast-num">#3</span>
       <h3 class="cast-name">Sven</h3>
       <span class="cast-tag">Der gemütliche Wanderer</span>
+      <span class="cast-fx">CHILL!</span>
     </article>
 
     <article class="cast-panel cast-c4 tilt-r">
       <span class="cast-num">#4</span>
       <h3 class="cast-name">Jana &amp; Jakob</h3>
       <span class="cast-tag">Die Sportskanonen</span>
-      <span class="cast-fx">ZACK!</span>
+      <span class="cast-fx">ZOOM!</span>
     </article>
 
     <article class="cast-panel cast-c5 tilt-l">
       <span class="cast-num">#5</span>
       <h3 class="cast-name">Jakobs Mutter</h3>
       <span class="cast-tag">Familienanschluss</span>
+      <span class="cast-fx">HALLO!</span>
     </article>
 
     <article class="cast-panel cast-c6 tilt-r">
@@ -112,13 +105,10 @@
 
 <!-- ===== 02 · WOHIN? ===== -->
 <section class="section section-blue">
-  <h2 class="h2"><span class="h2-num">02</span> Wohin gehts?</h2>
+  <h2 class="h2"><span class="h2-num">02</span> Wohin</h2>
   <p class="lede">An die Ostsee. Halbinsel Darß.</p>
 
   <div class="map-wrap">
-    <!-- OSM embed iframe — always works, no API key, no client JS,
-         no Leaflet/CSS-transform interactions. The marker sits on
-         Prerow as a central reference point. -->
     <iframe
       class="darss-map"
       title="Karte vom Darß"
@@ -128,32 +118,11 @@
     <span class="map-tag">Fischland-Darß-Zingst</span>
   </div>
 
-  <div class="spots-grid">
-    <div class="spot-card">
-      <span class="spot-icon"><svg class="i i-lg"><use href="#i-umbrella"/></svg></span>
-      <h4>Weststrand</h4>
-      <p>Wilder Strand. Keine Bebauung.</p>
-    </div>
-    <div class="spot-card">
-      <span class="spot-icon"><svg class="i i-lg"><use href="#i-lighthouse"/></svg></span>
-      <h4>Leuchtturm</h4>
-      <p>134 Stufen, dann Aussicht.</p>
-    </div>
-    <div class="spot-card">
-      <span class="spot-icon"><svg class="i i-lg"><use href="#i-pine"/></svg></span>
-      <h4>Darßwald</h4>
-      <p>Buchen, Kiefern, Wildnis.</p>
-    </div>
-    <div class="spot-card">
-      <span class="spot-icon"><svg class="i i-lg"><use href="#i-anchor"/></svg></span>
-      <h4>Prerow</h4>
-      <p>Hafen. Fischbrötchen.</p>
-    </div>
-  </div>
+  <span class="section-fx section-fx-tr section-fx-yellow">AHOI!</span>
 </section>
 
 <!-- ===== 03 · WAS MACHEN WIR? ===== -->
-<section class="section section-cream">
+<section class="section section-pink">
   <h2 class="h2"><span class="h2-num">03</span> Was machen wir?</h2>
   <p class="lede">Wandern. Gucken. Lachen.</p>
 
@@ -182,7 +151,19 @@
       <img class="act-img" alt="Lagerfeuer am Abend" src="https://images.unsplash.com/photo-1475738972911-5b44ce984c42?w=800&auto=format&fit=crop" />
       <div class="act-body"><h4>Abend in der Hütte</h4><p>Kamin. Wein. Karten.</p></div>
     </article>
+
+    <!-- Inside-joke activity 🩳 -->
+    <article class="act-card tilt-l act-joke">
+      <img class="act-img" alt="Wäsche auf einer Leine" src="/papa-darss/assets/hose.jpg" />
+      <div class="act-body">
+        <h4>Operation Hose</h4>
+        <p>Wir suchen die Hose, die aus dem Fenster geweht ist. Müsste mittlerweile am Darß angekommen sein.</p>
+      </div>
+      <span class="act-fx">SUCHE!</span>
+    </article>
   </div>
+
+  <span class="section-fx section-fx-tr section-fx-blue">ABENTEUER!</span>
 </section>
 
 <!-- ===== 04 · BLOCKHÜTTE ===== -->
@@ -208,10 +189,12 @@
       <p class="cabin-note">Genaue Hütte folgt sobald gebucht.</p>
     </div>
   </div>
+
+  <span class="section-fx section-fx-tr section-fx-yellow">GEMÜTLICH!</span>
 </section>
 
 <!-- ===== 05 · PACKLISTE ===== -->
-<section class="section section-cream">
+<section class="section section-purple">
   <h2 class="h2"><span class="h2-num">05</span> Was du mitbringst</h2>
   <p class="lede">Den Rest haben wir.</p>
 
@@ -223,13 +206,17 @@
     <div class="pack-tile"><svg class="i i-xl"><use href="#i-sock"/></svg><p>Warme Socken</p></div>
     <div class="pack-tile"><svg class="i i-xl"><use href="#i-sun"/></svg><p>Gute Laune</p></div>
   </div>
+
+  <span class="section-fx section-fx-tr section-fx-green">PACK EIN!</span>
 </section>
 
 <!-- ===== CLOSER ===== -->
 <section class="section section-orange closer">
   <h2 class="closer-title">Wir freuen uns, Papa.</h2>
-  <p class="closer-sub">Anna, Paula, Sven, Jana, Jakob, Jakobs Mutter &amp; Mama</p>
+  <p class="closer-sub">Paula, Anna, Sven, Jana, Jakob, Jakobs Mutter &amp; Mama</p>
   <span class="closer-heart"><svg class="i i-2xl"><use href="#i-heart"/></svg></span>
+
+  <span class="section-fx section-fx-tl section-fx-blue">BIS BALD!</span>
 </section>
 
 </main>
