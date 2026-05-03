@@ -1,0 +1,54 @@
+/* hero.css — top-of-page hero only. */
+
+.hero{
+  position: relative;
+  background:
+    radial-gradient(ellipse at top right, rgba(255,107,53,.30), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(26,120,214,.20), transparent 55%),
+    var(--sand);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px),
+    radial-gradient(ellipse at top right, rgba(255,107,53,.30), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(26,120,214,.20), transparent 55%);
+  background-size: 16px 16px, auto, auto;
+  padding: 56px 20px 96px;
+  border-bottom: var(--b-thick) solid var(--ink);
+  overflow: hidden;
+}
+.hero-inner{
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sun-bright);
+  color: var(--ink);
+  border: var(--b) solid var(--ink);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+  margin-bottom: 28px;
+}
+.hero-title{
+  font-family: var(--display);
+  font-size: clamp(56px, 14vw, 132px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  margin: 0 0 28px;
+  color: var(--ink);
+  text-shadow: 4px 4px 0 var(--sand-deep);
+}
+.hero-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}

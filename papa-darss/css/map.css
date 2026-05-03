@@ -1,0 +1,59 @@
+/* map.css — the Leaflet map container, comic CSS filter, custom
+   pin styling. */
+
+.map-wrap{
+  position: relative;
+  background: #fff;
+  border: var(--b) solid var(--ink);
+  border-radius: 18px;
+  box-shadow: var(--shadow-xl);
+  padding: 12px;
+  margin-bottom: 36px;
+  max-width: 1000px;
+}
+.darss-map{
+  width: 100%;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--paper);
+  /* Push the OSM tiles toward an illustrated/comic feel —
+     punch saturation, bump contrast, slight warm shift. */
+  filter: saturate(1.6) contrast(1.08) brightness(1.02) hue-rotate(-3deg);
+}
+@media (min-width: 720px){ .darss-map{ height: 480px; } }
+
+.map-tag{
+  position: absolute;
+  bottom: -14px; left: 24px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--sun-bright);
+}
+
+/* Pins are Leaflet DivIcons — comic-styled HTML */
+.map-pin{
+  background: var(--red);
+  color: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  box-shadow: 3px 3px 0 var(--ink);
+  white-space: nowrap;
+  text-shadow: 1px 1px 0 var(--ink);
+}
+.map-pin.is-blue{ background: var(--ocean); }
+.map-pin.is-green{ background: var(--grass); }
+.map-pin.is-orange{
+  background: var(--sun-bright);
+  color: var(--ink);
+  text-shadow: none;
+}

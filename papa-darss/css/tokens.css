@@ -1,0 +1,30 @@
+/* tokens.css — design tokens (colors, fonts, shadows, borders).
+   The single source of truth for the visual language. */
+
+:root{
+  /* Comic-Adventure palette — Clever-&-Smart loud */
+  --sand: #FBE7B0;
+  --sand-deep: #E8C97A;
+  --paper: #FFF6D6;
+  --paper-2: #FFF8EA;
+  --ocean: #1A78D6;
+  --ocean-deep: #0F4FB0;
+  --sun: #FF6B35;
+  --sun-bright: #FFB400;
+  --grass: #2EB04A;
+  --grass-deep: #1F8035;
+  --red: #E5322D;
+  --pink: #FF6BA0;
+  --ink: #111111;
+
+  /* Borders + shadows — chunky comic feel */
+  --b: 4px;
+  --b-thick: 6px;
+  --shadow: 5px 5px 0 0 var(--ink);
+  --shadow-lg: 8px 8px 0 0 var(--ink);
+  --shadow-xl: 12px 12px 0 0 var(--ink);
+
+  /* Typography */
+  --display: "Bangers", "Lilita One", "Arial Black", sans-serif;
+  --body: "Inter", system-ui, -apple-system, sans-serif;
+}

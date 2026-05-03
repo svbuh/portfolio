@@ -1,0 +1,130 @@
+/* comic.css — reusable comic-style atoms: speech bubbles, BAM
+   badges, highlight boxes, chips, person tags, tilt utilities. */
+
+/* Highlight box around a word — bordered, shadowed, tilted. */
+.hl{
+  display: inline-block;
+  padding: 0 0.18em;
+  border: var(--b) solid var(--ink);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.5deg);
+}
+.hl-orange{
+  background: var(--sun);
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Pill chips (date/location etc.) */
+.chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 3px 3px 0 0 var(--ink);
+}
+
+/* "BAM!"-style burst badges, used in the hero corners */
+.bam{
+  position: absolute;
+  display: inline-block;
+  font-family: var(--display);
+  font-size: clamp(28px, 6vw, 56px);
+  letter-spacing: 0.05em;
+  background: var(--red);
+  color: #fff;
+  padding: 14px 22px;
+  border: var(--b) solid var(--ink);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  text-shadow: 2px 2px 0 var(--ink);
+  z-index: 3;
+}
+.bam-1{ top: 24px; right: -10px; transform: rotate(12deg); }
+.bam-2{
+  bottom: 30px; right: 16px;
+  background: var(--ocean);
+  transform: rotate(-8deg);
+}
+.bam-3{
+  top: 40%; left: -14px;
+  background: var(--sun-bright);
+  color: var(--ink);
+  text-shadow: none;
+  transform: rotate(-15deg);
+}
+@media (max-width: 720px){
+  .bam-1{ font-size: 22px; padding: 8px 14px; right: -6px; }
+  .bam-2, .bam-3{ display: none; }
+}
+
+/* Speech bubble — pointer arrow built from two stacked triangles */
+.speech{
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  color: var(--ink);
+  border: var(--b) solid var(--ink);
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 16px;
+  max-width: 460px;
+  box-shadow: var(--shadow);
+  margin-top: 16px;
+}
+.speech p{ margin: 0; }
+.speech::before, .speech::after{
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  width: 0; height: 0;
+  border-style: solid;
+}
+.speech-right::before{
+  left: 36px;
+  border-width: 18px 14px 0 0;
+  border-color: var(--ink) transparent transparent transparent;
+}
+.speech-right::after{
+  left: 40px; bottom: -12px;
+  border-width: 14px 10px 0 0;
+  border-color: #fff transparent transparent transparent;
+}
+.speech-left::before{
+  right: 36px;
+  border-width: 18px 0 0 14px;
+  border-color: var(--ink) transparent transparent transparent;
+}
+.speech-left::after{
+  right: 40px; bottom: -12px;
+  border-width: 14px 0 0 10px;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Person tags inside .person-card */
+.person-tag{
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-2deg);
+  margin-bottom: 18px;
+}
+
+/* Tilt utilities — slight rotation on cards for comic feel */
+.tilt-l{ transform: rotate(-1.4deg); }
+.tilt-r{ transform: rotate(1.6deg); }

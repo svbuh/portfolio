@@ -1,0 +1,39 @@
+/* base.css — reset, body defaults, halftone background pattern,
+   sprite hide rule, icon classes. */
+
+*{ box-sizing: border-box; }
+html, body{ margin: 0; padding: 0; overflow-x: clip; }
+html{ scroll-behavior: smooth; }
+
+body{
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  /* Halftone dot texture over everything — comic feel */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.10) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+
+/* Hide the SVG sprite (when injected inline). */
+.sprite{ position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Icon helpers — used as <svg class="i"><use href="…#i-…"/></svg> */
+.i{
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.18em;
+  display: inline-block;
+  flex-shrink: 0;
+  color: currentColor;
+}
+.i-lg{ width: 1.6em; height: 1.6em; }
+.i-xl{ width: 2.4em; height: 2.4em; }
+.i-2xl{ width: 4em; height: 4em; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+}

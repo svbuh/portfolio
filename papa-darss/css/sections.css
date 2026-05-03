@@ -1,0 +1,74 @@
+/* sections.css — section base styles + h2/lede + colored variants. */
+
+.section{
+  position: relative;
+  padding: 64px 20px 80px;
+  border-top: var(--b-thick) solid var(--ink);
+}
+@media (min-width: 720px){
+  .section{ padding: 96px 48px 112px; }
+}
+
+.section-cream{ background: var(--paper); }
+
+.section-blue{
+  background: var(--ocean);
+  color: #fff;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,.18) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+.section-blue .lede{ color: rgba(255,255,255,.92); }
+
+.section-green{
+  background: var(--grass);
+  color: #fff;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,.18) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+.section-green .lede{ color: rgba(255,255,255,.92); }
+
+.section-orange{
+  background: var(--sun);
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.12) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+
+.h2{
+  font-family: var(--display);
+  font-size: clamp(44px, 9vw, 80px);
+  letter-spacing: 0.02em;
+  margin: 0 0 12px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.h2-num{
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--body);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  transform: translateY(-6px) rotate(-3deg);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.section-blue .h2-num{ background: var(--sun-bright); color: var(--ink); }
+.section-green .h2-num{ background: var(--red); color: #fff; }
+.section-orange .h2-num{ background: var(--ocean); color: #fff; }
+
+.lede{
+  font-size: clamp(17px, 2.5vw, 22px);
+  margin: 0 0 32px;
+  max-width: 60ch;
+  font-weight: 500;
+}

@@ -1,0 +1,25 @@
+/* decor.css — ambient decorative elements (clouds in hero, optional
+   sparkles, etc). Kept light: nothing animates across the whole
+   viewport, nothing intrusive. */
+
+/* Fluffy comic clouds — only inside the hero. */
+.clouds{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.cloud{
+  position: absolute;
+  display: block;
+}
+.cloud-1{ top: 32px; left: 6%; width: 110px; transform: rotate(-3deg); }
+.cloud-2{ top: 90px; right: 8%; width: 86px; transform: rotate(4deg); }
+.cloud-3{ top: 56%; left: 60%; width: 70px; transform: rotate(-2deg); opacity: .85; }
+
+@media (max-width: 720px){
+  .cloud-1{ width: 80px; top: 20px; }
+  .cloud-2{ width: 64px; top: 70px; }
+  .cloud-3{ display: none; }
+}
