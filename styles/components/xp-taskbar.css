@@ -182,6 +182,25 @@
   font-family: "Tahoma", Verdana, sans-serif;
   color: #000;
   animation: xp-sm-pop .12s ease-out;
+  /* Sit above any in-flow content (Contact CTAs etc.) without
+     having to give .xp-taskbar its own stacking context — that
+     was deliberately removed on mobile to avoid scroll jank. */
+  z-index: 2147483646;
+}
+/* Mobile: the taskbar is `position: relative` at the end of the
+   document (not fixed). An absolute-positioned child still floats
+   relative to that parent, but if the user has scrolled the parent
+   even slightly out of viewport the menu drifts with it. Switch
+   to `position: fixed` so the menu always anchors to the viewport
+   bottom (just above where the in-flow taskbar lands when the user
+   is fully scrolled to it). */
+@media (max-width: 639px){
+  .xp-startmenu{
+    position: fixed;
+    bottom: 32px;
+    max-height: calc(100svh - 40px);
+    overflow-y: auto;
+  }
 }
 @keyframes xp-sm-pop{
   from{ transform: translateY(8px); opacity: 0; }

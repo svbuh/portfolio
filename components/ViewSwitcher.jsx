@@ -35,15 +35,16 @@ function ViewSwitcher() {
 
   // Track which section is in view → update URL hash.
   //
-  // Only fires AFTER scroll has truly ended, never mid-scroll. Why:
-  // calling history.replaceState() during scroll causes iOS Safari to
-  // briefly surface the URL bar (showing the new #hash), which looks
-  // like a page reload/loading indicator and breaks the immersive
-  // feel. Listening to the native `scrollend` event (Safari 18+,
-  // Chrome 114+, Firefox 109+) is the cleanest signal; older browsers
-  // get a 350ms post-scroll-idle fallback.
+  // Touch devices skip this entirely: even when fired only on
+  // `scrollend`, history.replaceState on iOS Safari can surface the
+  // URL bar briefly (Safari "navigates" visually). Deep-linking via
+  // hash on a one-page mobile portfolio is low value; not worth the
+  // jank. On desktop (pointer:fine) it still runs.
   React.useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
     const targets = VIEW_IDS
       .map((id) => document.getElementById(id))
       .filter(Boolean);

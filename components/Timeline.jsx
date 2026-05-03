@@ -116,19 +116,56 @@ function TimelineItem({ t, i, total }) {
 
 }
 
-function Timeline() {
+// Animated track fill — only used on pointer:fine (mouse/trackpad).
+// Calling useScroll/useSpring subscribes to every scroll frame and
+// writes a transform every tick. On mobile Safari that constant
+// per-frame compositor work helps trigger Safari's "page is busy →
+// show URL bar" heuristic mid-scroll. Split into its own component
+// so we can mount it conditionally without violating React's hooks
+// rules (hooks must be called in the same order every render).
+function AnimatedTimelineTrack({ wrapRef }) {
   const m = window.motion;
-  const wrapRef = React.useRef(null);
   const { scrollYProgress } = window.useScroll({
     target: wrapRef,
     offset: ["start 80%", "end 20%"]
   });
-  // Smooth out the progress
   const lineProgress = window.useSpring(scrollYProgress, {
     stiffness: 80,
     damping: 22,
     restDelta: 0.001
   });
+  return (
+    <m.div
+      className="timeline-track-fill"
+      style={{ scaleY: lineProgress, originY: 0 }}
+    />
+  );
+}
+
+function useIsCoarsePointer() {
+  const [coarse, setCoarse] = React.useState(
+    typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(pointer: coarse)").matches
+      : false
+  );
+  React.useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia("(pointer: coarse)");
+    const update = () => setCoarse(mq.matches);
+    update();
+    if (mq.addEventListener) mq.addEventListener("change", update);
+    else mq.addListener(update);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", update);
+      else mq.removeListener(update);
+    };
+  }, []);
+  return coarse;
+}
+
+function Timeline() {
+  const wrapRef = React.useRef(null);
+  const isCoarse = useIsCoarsePointer();
 
   return (
     <section id="timeline">
@@ -138,14 +175,20 @@ function Timeline() {
         title="What I've been building."
         titleEm="building"
       />
-      
+
       <SectionFrame title="Timeline — career.log" icon="📅" tab="TIMELINE.N64">
         <div className="timeline-wrap" ref={wrapRef}>
           <div className="timeline-track" />
-          <m.div
-            className="timeline-track-fill"
-            style={{ scaleY: lineProgress, originY: 0 }} />
-          
+          {/* Mobile / touch: static full-height fill (no scroll-bound
+              spring). Desktop / trackpad: scroll-progress-driven scaleY. */}
+          {isCoarse ? (
+            <div
+              className="timeline-track-fill"
+              style={{ transform: "scaleY(1)", transformOrigin: "top center" }}
+            />
+          ) : (
+            <AnimatedTimelineTrack wrapRef={wrapRef} />
+          )}
           <ol className="timeline">
             {TIMELINE.map((t, i) =>
             <TimelineItem key={i} t={t} i={i} total={TIMELINE.length} />
