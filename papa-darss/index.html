@@ -11,9 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" />
 
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="" />
-
 <!-- Modular CSS — one file per concern, loaded in parallel. -->
 <link rel="stylesheet" href="/papa-darss/css/tokens.css" />
 <link rel="stylesheet" href="/papa-darss/css/base.css" />
@@ -31,7 +28,6 @@
 
 <!-- ===== HERO ===== -->
 <header class="hero">
-  <!-- Decorative comic clouds — only here, only inside hero, no animation. -->
   <div class="clouds" aria-hidden="true">
     <svg class="cloud cloud-1" viewBox="0 0 120 60" fill="#fff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round">
       <path d="M22 48 C8 48 4 36 14 30 C12 18 28 14 34 22 C42 10 62 10 66 22 C82 12 98 22 96 34 C112 32 116 48 100 48 Z"/>
@@ -65,32 +61,52 @@
 
 <main>
 
-<!-- ===== 01 · DIE CREW ===== -->
+<!-- ===== 01 · DIE TRUPPE — Cast Page ===== -->
 <section class="section section-cream">
-  <h2 class="h2"><span class="h2-num">01</span> Die Crew</h2>
-  <p class="lede">Sechs gegen den Darß.</p>
+  <h2 class="h2"><span class="h2-num">01</span> Die Truppe</h2>
+  <p class="lede">Sechs Helden gegen den Darß.</p>
 
-  <div class="crew-panel tilt-l">
-    <span class="crew-spark crew-spark-1">★</span>
-    <span class="crew-spark crew-spark-2">✦</span>
-    <span class="crew-spark crew-spark-3">★</span>
+  <div class="cast-grid">
 
-    <div class="crew-row">
-      <span class="crew-name n-red">Anna</span>
-      <span class="crew-name n-blue">Paula</span>
-      <span class="crew-name n-grass">Sven</span>
-    </div>
-    <div class="crew-and">+</div>
-    <div class="crew-row">
-      <span class="crew-name n-orange">Jana</span>
-      <span class="crew-name n-red">Jakob</span>
-    </div>
-    <div class="crew-and">+</div>
-    <div class="crew-row">
-      <span class="crew-name n-blue">Jakobs Mutter</span>
-    </div>
+    <article class="cast-panel cast-c1 tilt-l">
+      <span class="cast-num">#1</span>
+      <h3 class="cast-name">Anna</h3>
+      <span class="cast-tag">Stets im Stechschritt</span>
+    </article>
 
-    <div class="crew-tag">+ Du, Papa</div>
+    <article class="cast-panel cast-c2 tilt-r">
+      <span class="cast-num">#2</span>
+      <h3 class="cast-name">Paula</h3>
+      <span class="cast-tag">Wird geschoben! (Baby)</span>
+      <span class="cast-fx">BABY!</span>
+    </article>
+
+    <article class="cast-panel cast-c3 tilt-l">
+      <span class="cast-num">#3</span>
+      <h3 class="cast-name">Sven</h3>
+      <span class="cast-tag">Der gemütliche Wanderer</span>
+    </article>
+
+    <article class="cast-panel cast-c4 tilt-r">
+      <span class="cast-num">#4</span>
+      <h3 class="cast-name">Jana &amp; Jakob</h3>
+      <span class="cast-tag">Die Sportskanonen</span>
+      <span class="cast-fx">ZACK!</span>
+    </article>
+
+    <article class="cast-panel cast-c5 tilt-l">
+      <span class="cast-num">#5</span>
+      <h3 class="cast-name">Jakobs Mutter</h3>
+      <span class="cast-tag">Familienanschluss</span>
+    </article>
+
+    <article class="cast-panel cast-c6 tilt-r">
+      <span class="cast-num">#6</span>
+      <h3 class="cast-name">Mama</h3>
+      <span class="cast-tag">Würde lieber rudern</span>
+      <span class="cast-fx">RUDER!</span>
+    </article>
+
   </div>
 </section>
 
@@ -99,8 +115,16 @@
   <h2 class="h2"><span class="h2-num">02</span> Wohin gehts?</h2>
   <p class="lede">An die Ostsee. Halbinsel Darß.</p>
 
-  <div class="map-wrap tilt-r">
-    <div id="darss-map" class="darss-map"></div>
+  <div class="map-wrap">
+    <!-- OSM embed iframe — always works, no API key, no client JS,
+         no Leaflet/CSS-transform interactions. The marker sits on
+         Prerow as a central reference point. -->
+    <iframe
+      class="darss-map"
+      title="Karte vom Darß"
+      loading="lazy"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=12.30%2C54.35%2C12.75%2C54.55&amp;layer=mapnik&amp;marker=54.4500%2C12.5500"
+    ></iframe>
     <span class="map-tag">Fischland-Darß-Zingst</span>
   </div>
 
@@ -204,7 +228,7 @@
 <!-- ===== CLOSER ===== -->
 <section class="section section-orange closer">
   <h2 class="closer-title">Wir freuen uns, Papa.</h2>
-  <p class="closer-sub">Anna, Paula, Sven, Jana, Jakob &amp; Jakobs Mutter</p>
+  <p class="closer-sub">Anna, Paula, Sven, Jana, Jakob, Jakobs Mutter &amp; Mama</p>
   <span class="closer-heart"><svg class="i i-2xl"><use href="#i-heart"/></svg></span>
 </section>
 
@@ -215,8 +239,6 @@
 </footer>
 
 <script src="/papa-darss/js/sprite.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-<script src="/papa-darss/js/map.js"></script>
 
 </body>
 </html>
