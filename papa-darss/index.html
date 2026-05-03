@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Ein Geschenk für Papa — Darß-Wochenende</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" />
+
+<!-- Leaflet (mini map lib + CSS, ~42 KB) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">🎁 Ein Geschenk für Papa</span>
+    <h1 class="hero-title">Wir entführen<br/>dich an den<br/><span class="hl hl-orange">Darß!</span></h1>
+
+    <div class="speech speech-right">
+      <p>Pack die Wanderschuhe ein, Papa — wir sind dabei!</p>
+    </div>
+
+    <div class="hero-meta">
+      <span class="chip">📅 September 2026 (Datum tbd)</span>
+      <span class="chip">🌲 Fischland-Darß-Zingst</span>
+      <span class="chip">🛏️ 1 Übernachtung in der Blockhütte</span>
+    </div>
+  </div>
+  <span class="bam bam-1">BÄM!</span>
+  <span class="bam bam-2">JIPPIE!</span>
+</header>
+
+<main>
+
+<!-- ===== WER KOMMT MIT? ===== -->
+<section class="section section-cream">
+  <h2 class="h2"><span class="h2-num">01</span> Wer kommt mit?</h2>
+  <p class="lede">Die ganze Bande. Du bist der Ehrengast.</p>
+
+  <div class="people-grid">
+
+    <article class="person-card tilt-l">
+      <div class="person-avatars">
+        <!-- Anna -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M8 24 C18 6, 46 6, 56 24 L 56 30 L 8 30 Z" fill="#5A3A29" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M24 44 Q32 50 40 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <!-- Paula -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M10 22 C16 8, 48 8, 54 22 C 56 30, 50 36, 50 36 L 14 36 C 14 36, 8 30, 10 22 Z" fill="#D4A574" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M26 44 Q32 48 38 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <!-- Sven -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M10 26 C12 12, 52 12, 54 26 L 54 30 L 10 30 Z" fill="#3a2a1f" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M24 44 Q32 50 40 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 48 Q32 52 42 48" fill="none" stroke="#1a1a1a" stroke-width="2"/></svg>
+      </div>
+      <h3>Anna, Paula &amp; Sven</h3>
+      <p>Die Crew aus Celle. Mit Wanderschuhen und Energie.</p>
+    </article>
+
+    <article class="person-card tilt-r">
+      <div class="person-avatars">
+        <!-- Jana -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M8 24 C12 8, 52 8, 56 24 C 60 38, 50 46, 32 46 C 14 46, 4 38, 8 24 Z" fill="#C97B47" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M26 44 Q32 48 38 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <!-- Jakob -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M12 24 C16 12, 48 12, 52 24 L 52 28 L 12 28 Z" fill="#7a5230" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M24 44 Q32 50 40 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Jana &amp; Jakob</h3>
+      <p>Das wandererprobte Duo. Bringen den Espresso-Kocher mit.</p>
+    </article>
+
+    <article class="person-card tilt-l">
+      <div class="person-avatars">
+        <!-- Jakobs Mutter -->
+        <svg viewBox="0 0 64 64" class="avatar"><circle cx="32" cy="32" r="28" fill="#FFD7B5" stroke="#1a1a1a" stroke-width="3"/><path d="M10 22 C14 6, 50 6, 54 22 C 56 32, 50 38, 50 38 L 14 38 C 14 38, 8 32, 10 22 Z" fill="#a89c8a" stroke="#1a1a1a" stroke-width="3"/><circle cx="24" cy="34" r="2.5" fill="#1a1a1a"/><circle cx="40" cy="34" r="2.5" fill="#1a1a1a"/><path d="M26 44 Q32 48 38 44" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Jakobs Mutter</h3>
+      <p>Familienanschluss. Freut sich auf die Ostsee-Luft.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== WOHIN? ===== -->
+<section class="section section-blue">
+  <h2 class="h2"><span class="h2-num">02</span> Wohin gehts?</h2>
+  <p class="lede">An den schönsten Strand Norddeutschlands. Versprochen.</p>
+
+  <div class="map-wrap tilt-r">
+    <div id="darss-map" class="darss-map"></div>
+    <span class="map-tag">Fischland-Darß-Zingst, Mecklenburg-Vorpommern</span>
+  </div>
+
+  <div class="spots-grid">
+    <div class="spot-card">
+      <span class="spot-icon">🏖️</span>
+      <h4>Weststrand</h4>
+      <p>Einer der naturbelassensten Strände Deutschlands. Wilde Düne, kein Bebauung in Sicht.</p>
+    </div>
+    <div class="spot-card">
+      <span class="spot-icon">🗼</span>
+      <h4>Leuchtturm Darßer Ort</h4>
+      <p>134 Stufen hoch, dann Panorama über Halbinsel und Ostsee. Pflicht.</p>
+    </div>
+    <div class="spot-card">
+      <span class="spot-icon">🌲</span>
+      <h4>Darßwald</h4>
+      <p>Buchen, Kiefern, Wildschweine. Wandern direkt vom Strand bis ins Dickicht.</p>
+    </div>
+    <div class="spot-card">
+      <span class="spot-icon">⚓</span>
+      <h4>Prerow</h4>
+      <p>Kapitänshäuser, Seemannskirche, Fischbrötchen am Hafen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WAS MACHEN WIR? ===== -->
+<section class="section section-cream">
+  <h2 class="h2"><span class="h2-num">03</span> Was machen wir?</h2>
+  <p class="lede">Wandern, gucken, schmecken, lachen.</p>
+
+  <div class="acts-grid">
+
+    <article class="act-card tilt-l">
+      <img class="act-img" alt="Wanderpfad durch Wald"
+        src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Wandern durch den Darßwald</h4>
+        <p>Vom Parkplatz Drei Eichen direkt zum Weststrand. Etwa 5 km Hin- und Rückweg.</p>
+      </div>
+    </article>
+
+    <article class="act-card tilt-r">
+      <img class="act-img" alt="Strand"
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Stunden am Weststrand</h4>
+        <p>Windflüchter-Kiefern, weißer Sand, Ostsee-Wellen. Kein Smartphone-Empfang. Perfekt.</p>
+      </div>
+    </article>
+
+    <article class="act-card tilt-l">
+      <img class="act-img" alt="Leuchtturm"
+        src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Leuchtturm besteigen</h4>
+        <p>134 Stufen, oben dann der Blick über die ganze Halbinsel und die Bodden-Landschaft.</p>
+      </div>
+    </article>
+
+    <article class="act-card tilt-r">
+      <img class="act-img" alt="Sonnenuntergang am Strand"
+        src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Sonnenuntergang Weststrand</h4>
+        <p>Decken, Thermoskanne, Blick aufs Wasser. Der Darß ist eine der wenigen Stellen, wo die Sonne ÜBER der Ostsee untergeht.</p>
+      </div>
+    </article>
+
+    <article class="act-card tilt-l">
+      <img class="act-img" alt="Fischbrötchen"
+        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Fischbrötchen in Prerow</h4>
+        <p>Matjes, Bismarck, Backfisch. Am Hafen kaufen, auf der Mole essen.</p>
+      </div>
+    </article>
+
+    <article class="act-card tilt-r">
+      <img class="act-img" alt="Lagerfeuer"
+        src="https://images.unsplash.com/photo-1475738972911-5b44ce984c42?w=800&auto=format&fit=crop" />
+      <div class="act-body">
+        <h4>Abend in der Hütte</h4>
+        <p>Kamin an, Wein auf, Karten raus. Lange reden, lange lachen.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== UNTERKUNFT ===== -->
+<section class="section section-green">
+  <h2 class="h2"><span class="h2-num">04</span> Wo schlafen wir?</h2>
+  <p class="lede">Eine echte Blockhütte. Dicke Balken. Modern eingerichtet.</p>
+
+  <div class="cabin-row">
+    <div class="cabin-photo tilt-l">
+      <img alt="Moderne Blockhütte"
+        src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=900&auto=format&fit=crop" />
+    </div>
+
+    <div class="cabin-info">
+      <div class="speech speech-left">
+        <p>So wie aus Red Dead Redemption — nur mit Espresso-Maschine!</p>
+      </div>
+      <ul class="cabin-bullets">
+        <li>🪵 Echte Holzbalken, ehrlich gebaut</li>
+        <li>🔥 Kamin im Wohnraum</li>
+        <li>🛏️ Schlafplätze für die ganze Truppe</li>
+        <li>☕ Voll ausgestattete Küche</li>
+        <li>🌳 Mitten im Grünen, ruhig gelegen</li>
+      </ul>
+      <p class="cabin-note">Genaue Hütte folgt sobald gebucht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PACKLISTE ===== -->
+<section class="section section-cream">
+  <h2 class="h2"><span class="h2-num">05</span> Was du mitbringen solltest</h2>
+  <p class="lede">Den Rest organisieren wir.</p>
+
+  <div class="pack-grid">
+    <div class="pack-tile"><span>🥾</span><p>Wanderschuhe</p></div>
+    <div class="pack-tile"><span>🧥</span><p>Windjacke</p></div>
+    <div class="pack-tile"><span>📷</span><p>Kamera</p></div>
+    <div class="pack-tile"><span>📖</span><p>Ein Buch</p></div>
+    <div class="pack-tile"><span>🧦</span><p>Warme Socken</p></div>
+    <div class="pack-tile"><span>😄</span><p>Gute Laune</p></div>
+  </div>
+</section>
+
+<!-- ===== CLOSER ===== -->
+<section class="section section-orange closer">
+  <h2 class="closer-title">Wir freuen uns auf dich, Papa.</h2>
+  <p class="closer-sub">Anna, Paula, Sven, Jana, Jakob &amp; Jakobs Mutter</p>
+  <span class="closer-heart">❤️</span>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <p>Mit Liebe gemacht · Darß-Wochenende September 2026</p>
+</footer>
+
+<!-- Leaflet (mini map lib) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+<script src="map.js"></script>
+
+</body>
+</html>
