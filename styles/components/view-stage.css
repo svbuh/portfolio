@@ -1,28 +1,38 @@
-/* Snap stage — all sections stacked, each is full-viewport, body scrolls
-   in mandatory snap mode. So only one section is visible at a time,
-   the user can scroll natively, and Hero CTAs trigger scrollIntoView
-   which the snap engine snaps to.
+/* Snap stage — Hero / WhatIDo / Stack / Timeline / Contact stacked.
+   Only one section at a time is the goal, but only on Desktop where
+   the viewport doesn't resize on scroll.
 
-   Scoped via :has(.snap-stage) so XP-desktop-mode (which uses
-   .xp-desktop instead) keeps its scroll-locked windowed layout. */
+   Mobile (<640): plain long-scroll. No snap, no forced 100svh height.
+   The mobile URL bar collapses/reappears on scroll, which fights snap
+   targets and looks like the page is jumping. So we don't snap there.
 
-body:has(.snap-stage){
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
+   Desktop (>=640): full mandatory snap, every section is exactly one
+   viewport tall (svh, not dvh — stable across any UI chrome change). */
 
-/* Every section: snap target, full-viewport tall, vertically centered.
-   Symmetric block padding so the centering doesn't get pulled toward
-   one edge by mismatched margins on first/last child. */
-.snap-stage > section{
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: 80px;
-}
+/* Mobile defaults: long-scroll. Sections size to their own content,
+   spacing between them comes from the global `section { margin-bottom }`
+   rule in styles/base/layout.css. */
 .snap-stage > section > *{
   margin-block-start: 0;
+}
+
+/* Desktop: opt in to snap + full-viewport sections. With snap engaged,
+   the inter-section margin would just be a dead zone between snap
+   points, so we zero it. */
+@media (min-width: 640px){
+  body:has(.snap-stage){
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+  }
+  .snap-stage > section{
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 0;
+    margin-bottom: 0;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 80px;
+  }
 }

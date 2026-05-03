@@ -47,19 +47,57 @@ function N64Cartridge({ tab, children }) {
   );
 }
 
-// SectionFrame — picks frame based on current theme via Context.
-// Skips wrapping when inside a DesktopWindow (XP desktop mode).
+// SectionFrame — stable wrapper, theme decides chrome via className.
+//
+// Why not switch React component types per theme? When SectionFrame
+// returned <XPWindow> vs <N64Cartridge> vs <Fragment>, the children's
+// immediate parent React-element type changed on theme switch → React
+// unmounted the entire subtree → every Framer `initial={{opacity:0}}`
+// + `useInView({once:true})` reset → visible flicker as the reveal
+// animations replayed. Now the body div is always at the same JSX
+// position (index 2) with the same component type (div), so React
+// keeps the subtree mounted across theme changes.
 function SectionFrame({ title, icon, statusbar, tab, children }) {
   const t = useCurrentTheme();
   const inDesktop = React.useContext(window.InDesktopContext || React.createContext(false));
-  if (t === "xp") {
-    if (inDesktop) return <>{children}</>;
-    return <XPWindow title={title} icon={icon} statusbar={statusbar}>{children}</XPWindow>;
-  }
-  if (t === "n64") {
-    return <N64Cartridge tab={tab || title}>{children}</N64Cartridge>;
-  }
-  return <>{children}</>;
+  if (t === "xp" && inDesktop) return <>{children}</>;
+
+  const outerCls =
+    "section-frame section-frame--" + t +
+    (t === "xp" ? " xp-window" : "") +
+    (t === "n64" ? " n64-cartridge" : "");
+  const bodyCls =
+    "section-frame-body" +
+    (t === "xp" ? " xp-body" : "") +
+    (t === "n64" ? " n64-cart-label" : "");
+
+  return (
+    <div className={outerCls}>
+      {t === "xp" ? (
+        <div className="xp-titlebar">
+          <div className="xp-title">
+            {icon ? <span className="xp-icon">{icon}</span> : null}
+            <span>{title}</span>
+          </div>
+          <div className="xp-controls">
+            <button className="xp-ctrl" aria-label="Minimize" tabIndex={-1}>_</button>
+            <button className="xp-ctrl" aria-label="Maximize" tabIndex={-1}>▢</button>
+            <button className="xp-ctrl close" aria-label="Close" tabIndex={-1}>✕</button>
+          </div>
+        </div>
+      ) : null}
+      {t === "n64" ? (
+        <div className="n64-cart-tab">
+          <span>{tab || title}</span>
+          <span className="stripe">
+            <span /><span /><span /><span />
+          </span>
+        </div>
+      ) : null}
+      <div className={bodyCls}>{children}</div>
+      {t === "xp" && statusbar ? <div className="xp-statusbar">{statusbar}</div> : null}
+    </div>
+  );
 }
 
 window.XPWindow = XPWindow;

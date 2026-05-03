@@ -40,7 +40,7 @@ body[data-theme="xp"]{
   background-color: #5BA1D8;
   font-size: 11px;
   color: #000;
-  min-height: 100vh;
+  min-height: 100svh;
   position: relative;
 }
 

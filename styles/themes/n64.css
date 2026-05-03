@@ -47,7 +47,7 @@ body[data-theme="n64"]{
 body[data-theme="n64"]{
   background: transparent;
   color: var(--ink);
-  min-height: 100vh;
+  min-height: 100svh;
   position: relative;
 }
 

@@ -33,29 +33,42 @@ function ViewSwitcher() {
     }
   }, []);
 
-  // Track which section is in view → update currentId + URL hash.
+  // Track which section is in view → update URL hash.
+  // Debounced so a fast flick on mobile doesn't fire replaceState
+  // dozens of times mid-scroll (which can trigger reflow / jank).
   React.useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
     const targets = VIEW_IDS
       .map((id) => document.getElementById(id))
       .filter(Boolean);
     if (!targets.length) return;
+    let pendingId = null;
+    let timer = null;
+    const flush = () => {
+      if (!pendingId) return;
+      const next = pendingId === "home" ? "" : `#${pendingId}`;
+      if (window.location.hash !== next) {
+        history.replaceState(null, "", next || window.location.pathname);
+      }
+      pendingId = null;
+    };
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio >= 0.55) {
-            const id = e.target.id;
-            const next = id === "home" ? "" : `#${id}`;
-            if (window.location.hash !== next) {
-              history.replaceState(null, "", next || window.location.pathname);
-            }
+          if (e.isIntersecting && e.intersectionRatio >= 0.6) {
+            pendingId = e.target.id;
           }
         });
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(flush, 180);
       },
-      { threshold: [0.55] }
+      { threshold: [0.6] }
     );
     targets.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
+    return () => {
+      obs.disconnect();
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   return (

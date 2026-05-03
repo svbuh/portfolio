@@ -1,11 +1,19 @@
 /* Hero — centered headline w/ staggered word reveal */
 
-.hero{ position: relative; padding: 18px 0 0; min-height: auto; }
+/* Mobile: pure padding-based "tall hero", no viewport units.
+   Why no `100svh`/`100dvh`? Both interact with the URL-bar collapse:
+   the section either changes height (dvh) or the visible viewport
+   grows past it (svh) → the next section peeks in. With fixed-px
+   padding nothing references the viewport, so the URL-bar can move
+   freely without ever shifting the layout. */
+.hero{
+  position: relative;
+  padding: 96px 0 128px;
+}
 .hero-centered{
   position: relative;
-  min-height: auto;
   display: flex; align-items: center; justify-content: center;
-  padding: 28px 0;
+  padding: 0;
 }
 
 /* Long-scroll layouts (PS1/Neo/N64) — make the hero fill the first fold so
@@ -18,7 +26,7 @@
     padding: 64px 0;
   }
   body:not([data-theme="xp"]) .hero-centered{
-    min-height: calc(100dvh - 110px);
+    min-height: calc(100svh - 110px);
   }
 }
 .hero-center{

@@ -16,6 +16,7 @@
   background: var(--ink);
   transform-origin: top center;
   z-index: 0;
+  will-change: transform;
 }
 
 .timeline{
@@ -78,7 +79,9 @@
   margin-left: 0;
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.tl-main:hover{ transform: translate(-2px,-2px); box-shadow: var(--sh); }
+@media (hover: hover){
+  .tl-main:hover{ transform: translate(-2px,-2px); box-shadow: var(--sh); }
+}
 
 .tl-role{
   font-family: var(--font-display);
