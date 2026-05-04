@@ -8,7 +8,7 @@
   border-radius: 18px;
   box-shadow: var(--shadow-xl);
   padding: 12px;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
   max-width: 1000px;
 }
 /* The map is now an OSM <iframe> — Leaflet was unreliable in the

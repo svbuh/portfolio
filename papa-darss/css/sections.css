@@ -98,3 +98,16 @@
   max-width: 60ch;
   font-weight: 500;
 }
+
+/* On tablet and up, center every section's heading + lede so the
+   page reads as a centered comic-book layout instead of left-
+   aligned text. Content blocks (cards, map, cabin, etc.) are
+   already centered via margin: 0 auto on their grids. */
+@media (min-width: 720px){
+  .h2{ justify-content: center; }
+  .lede{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
