@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/papa-darss/css/cards.css" />
 <link rel="stylesheet" href="/papa-darss/css/map.css" />
 <link rel="stylesheet" href="/papa-darss/css/cabin.css" />
+<link rel="stylesheet" href="/papa-darss/css/tresor.css" />
 <link rel="stylesheet" href="/papa-darss/css/closer.css" />
 </head>
 
@@ -198,6 +199,143 @@
   <span class="section-fx section-fx-tr section-fx-green">PACK EIN!</span>
 </section>
 
+<!-- ===== 06 · DER TRESOR ===== -->
+<section class="section section-cream tresor-section" aria-labelledby="tresor-title">
+  <h2 id="tresor-title" class="h2"><span class="h2-num">06</span> Der Tresor</h2>
+  <p class="lede">Sag das Zauberwort, Papa.</p>
+
+  <div class="tresor" id="tresor">
+    <div class="tresor-frame">
+      <div class="tresor-body">
+        <div class="tresor-inside" aria-hidden="true">
+          <svg class="tresor-gift" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#i-gift"/>
+          </svg>
+          <span class="tresor-coin">GUTSCHEIN!</span>
+        </div>
+
+        <div class="tresor-door">
+          <span class="bolt bolt-tl" aria-hidden="true"></span>
+          <span class="bolt bolt-tr" aria-hidden="true"></span>
+          <span class="bolt bolt-bl" aria-hidden="true"></span>
+          <span class="bolt bolt-br" aria-hidden="true"></span>
+
+          <span class="tresor-hinge tresor-hinge-top" aria-hidden="true"></span>
+          <span class="tresor-hinge tresor-hinge-bottom" aria-hidden="true"></span>
+
+          <div class="tresor-dial" aria-hidden="true">
+            <span class="tresor-pointer"></span>
+          <svg class="tresor-dial-svg" viewBox="0 0 200 200">
+            <!-- Rotating dial face — knob, numbers, ticks all spin together -->
+            <g class="tresor-needle">
+              <!-- Outer disc -->
+              <circle cx="100" cy="100" r="92" fill="#FBE7B0" stroke="#111" stroke-width="6"/>
+
+              <!-- Bold numbers around the rim (Bangers, comic-style) -->
+              <g font-family="Bangers, 'Lilita One', sans-serif" font-size="22" text-anchor="middle" fill="#111" font-weight="700">
+                <text x="100" y="36">0</text>
+                <text x="166" y="108">25</text>
+                <text x="100" y="180">50</text>
+                <text x="34" y="108">75</text>
+              </g>
+
+              <!-- Cardinal ticks (long, between numbers) -->
+              <g stroke="#111" stroke-width="3" stroke-linecap="round">
+                <line x1="141" y1="59" x2="135" y2="65"/>
+                <line x1="141" y1="141" x2="135" y2="135"/>
+                <line x1="59" y1="141" x2="65" y2="135"/>
+                <line x1="59" y1="59" x2="65" y2="65"/>
+              </g>
+
+              <!-- Minor ticks (every 22.5° between cardinals) -->
+              <g stroke="#111" stroke-width="2" stroke-linecap="round" opacity="0.55">
+                <line x1="123" y1="17" x2="121" y2="24"/>
+                <line x1="146" y1="32" x2="142" y2="38"/>
+                <line x1="168" y1="54" x2="162" y2="58"/>
+                <line x1="183" y1="77" x2="176" y2="79"/>
+                <line x1="183" y1="123" x2="176" y2="121"/>
+                <line x1="168" y1="146" x2="162" y2="142"/>
+                <line x1="146" y1="168" x2="142" y2="162"/>
+                <line x1="123" y1="183" x2="121" y2="176"/>
+                <line x1="77" y1="183" x2="79" y2="176"/>
+                <line x1="54" y1="168" x2="58" y2="162"/>
+                <line x1="32" y1="146" x2="38" y2="142"/>
+                <line x1="17" y1="123" x2="24" y2="121"/>
+                <line x1="17" y1="77" x2="24" y2="79"/>
+                <line x1="32" y1="54" x2="38" y2="58"/>
+                <line x1="54" y1="32" x2="58" y2="38"/>
+                <line x1="77" y1="17" x2="79" y2="24"/>
+              </g>
+
+              <!-- Inner knob (knurled grip) -->
+              <circle cx="100" cy="100" r="46" fill="#3a3a3a" stroke="#111" stroke-width="4"/>
+
+              <!-- Grip notches around the knob — radial dashes, gives "geriffelt" feel -->
+              <g stroke="#fbe7b0" stroke-width="3" stroke-linecap="round" opacity="0.9">
+                <line x1="100" y1="60" x2="100" y2="70"/>
+                <line x1="100" y1="130" x2="100" y2="140"/>
+                <line x1="60" y1="100" x2="70" y2="100"/>
+                <line x1="130" y1="100" x2="140" y2="100"/>
+                <line x1="71.7" y1="71.7" x2="78.8" y2="78.8"/>
+                <line x1="128.3" y1="71.7" x2="121.2" y2="78.8"/>
+                <line x1="71.7" y1="128.3" x2="78.8" y2="121.2"/>
+                <line x1="128.3" y1="128.3" x2="121.2" y2="121.2"/>
+                <line x1="84.7" y1="62.4" x2="88.2" y2="71.8"/>
+                <line x1="115.3" y1="62.4" x2="111.8" y2="71.8"/>
+                <line x1="84.7" y1="137.6" x2="88.2" y2="128.2"/>
+                <line x1="115.3" y1="137.6" x2="111.8" y2="128.2"/>
+              </g>
+
+              <!-- Center hex bolt -->
+              <circle cx="100" cy="100" r="9" fill="#111"/>
+              <circle cx="100" cy="100" r="3" fill="#fbe7b0"/>
+            </g>
+          </svg>
+          </div>
+
+          <span class="tresor-handle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+    <span class="tresor-fx tresor-fx-wrong" aria-hidden="true">NÖÖÖ!</span>
+    <span class="tresor-fx tresor-fx-right" aria-hidden="true">ENTSPERRT!</span>
+  </div>
+
+  <!-- TODO: Hint für Papa frei nach Geschmack anpassen. -->
+  <div class="speech speech-left tresor-speech">
+    <p>Pssst… du kennst es schon, Papa.</p>
+  </div>
+
+  <form class="tresor-form" id="tresorForm" autocomplete="off">
+    <label class="tresor-label" for="tresorPw">Zauberwort</label>
+    <div class="tresor-input-row">
+      <input
+        class="tresor-input"
+        id="tresorPw"
+        type="password"
+        autocomplete="off"
+        spellcheck="false"
+        autocapitalize="off"
+        placeholder="…"
+        aria-describedby="tresor-status"
+      />
+      <button class="tresor-btn" type="submit">AUFSCHLIESSEN!</button>
+    </div>
+    <p class="tresor-status" id="tresor-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="tresor-reveal" id="tresorReveal" hidden>
+    <h3 class="tresor-reveal-title">Dein Geschenk, Papa!</h3>
+    <iframe class="tresor-pdf" id="tresorPdf" title="Geschenkkarte" aria-label="Geschenkkarte"></iframe>
+    <p class="tresor-reveal-actions">
+      <a class="tresor-dl" id="tresorDl" download="Geschenkkarte.pdf">⬇ Als PDF öffnen / herunterladen</a>
+    </p>
+  </div>
+
+  <span class="section-fx section-fx-tr section-fx-yellow">TOP SECRET!</span>
+</section>
+
 <!-- ===== CLOSER ===== -->
 <section class="section section-orange closer">
   <h2 class="closer-title">Wir freuen uns, Papa.</h2>
@@ -214,6 +352,7 @@
 </footer>
 
 <script src="/papa-darss/js/sprite.js"></script>
+<script src="/papa-darss/js/tresor.js"></script>
 
 </body>
 </html>

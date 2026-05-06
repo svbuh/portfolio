@@ -28,3 +28,6 @@ build/
 # Misc throwaway
 *.log
 .tmp/
+
+# Plaintext present PDF — only the .enc version may be committed
+assets/present/*.pdf
